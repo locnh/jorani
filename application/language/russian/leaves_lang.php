@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.4.2
@@ -16,6 +16,8 @@ $lang['leaves_summary_thead_available'] = 'Доступно';
 $lang['leaves_summary_thead_taken'] = 'Использовано';
 $lang['leaves_summary_thead_entitled'] = 'Предоставляемые дни';
 $lang['leaves_summary_thead_description'] = 'Описание';
+$lang['leaves_summary_thead_actual'] = 'actual';
+$lang['leaves_summary_thead_simulated'] = 'simulated';
 $lang['leaves_summary_tbody_empty'] = 'Нет предоставленных или использованных дней для этого периода. Обратитесь к своему руководителю.';
 $lang['leaves_summary_flash_msg_error'] = 'Похоже вы не имеете контракта. Обратитесь к своему руководителю.';
 $lang['leaves_summary_date_field'] = 'Дата отчёта';
@@ -33,6 +35,8 @@ $lang['leaves_index_thead_cause'] = 'Причина';
 $lang['leaves_index_thead_duration'] = 'Продолжительность';
 $lang['leaves_index_thead_type'] = 'Тип';
 $lang['leaves_index_thead_status'] = 'Состояние';
+$lang['leaves_index_thead_requested_date'] = 'Requested';
+$lang['leaves_index_thead_last_change'] = 'Last change';
 $lang['leaves_index_button_export'] = 'Экспортировать список';
 $lang['leaves_index_button_create'] = 'Новый запрос';
 $lang['leaves_index_popup_delete_title'] = 'Удалить заявление на отпуск';
@@ -68,6 +72,13 @@ $lang['leaves_create_flash_msg_error'] = 'Заявление на отпуск �
 
 $lang['leaves_flash_spn_list_days_off'] = '%s non-working days in the period';
 $lang['leaves_flash_msg_overlap_dayoff'] = 'Your leave request matches with a non-working day.';
+
+$lang['leaves_cancellation_flash_msg_error'] = 'You can\'t cancel this leave request';
+$lang['leaves_cancellation_flash_msg_success'] = 'The cancellation request has been successfully sent';
+$lang['requests_cancellation_accept_flash_msg_success'] = 'The leave request has been successfully cancelled';
+$lang['requests_cancellation_accept_flash_msg_error'] = 'An error occured while trying to accept the cancellation';
+$lang['requests_cancellation_reject_flash_msg_success'] = 'The leave request has now its original status of Accepted';
+$lang['requests_cancellation_reject_flash_msg_error'] = 'An error occured while trying to reject the cancellation';
 
 $lang['leaves_edit_html_title'] = 'Редактировать заявление на отпуск';
 $lang['leaves_edit_title'] = 'Редактировать заявление на отпуск №';
@@ -114,3 +125,12 @@ $lang['leaves_export_thead_cause'] = 'Причина';
 $lang['leaves_export_thead_duration'] = 'Продолжительность';
 $lang['leaves_export_thead_type'] = 'Тип';
 $lang['leaves_export_thead_status'] = 'Состояние';
+
+$lang['leaves_button_send_reminder'] = 'Send a reminder';
+$lang['leaves_reminder_flash_msg_success'] = 'The reminder email was sent to the manager';
+
+$lang['leaves_comment_title'] = 'Comments';
+$lang['leaves_comment_new_comment'] = 'New comment';
+$lang['leaves_comment_send_comment'] = 'Send comment';
+$lang['leaves_comment_author_saying'] = ' says';
+$lang['leaves_comment_status_changed'] = 'The status of the leave have been changed to ';

@@ -21,7 +21,9 @@ Jorani has been tested with MySQL and MariaDB (please note that functions are cr
 * Import <code>/sql/lms.sql</code>.
 * Change <code>application/config/database.php</code> according to your environment.
 
-Please note that the schema contains procedures, so the user created must have EXECUTE permission.
+Please note that the schema contains procedures, so the user used for Jorani must have EXECUTE permission. 
+Please check errors output by the script as some users reported that procedures are not created if you don't have SUPER privilege. 
+A possible workaround is to start your MySQL session by this command `SET GLOBAL log_bin_trust_function_creators = 1;` (please refer to MySQL documentation).
 
 ## E-mail setup
 
@@ -105,6 +107,8 @@ For your convinience, a sample lighttpd configuration file is provided in this f
 To enable PHP in IIS7, you must follow the instructions provided on the official IIS website : http://www.iis.net/learn/application-frameworks/install-and-configure-php-applications-on-iis/using-fastcgi-to-host-php-applications-on-iis
 
 Jorani uses rewriting techniques, so you must install the rewriting module prior using Jorani http://www.iis.net/downloads/microsoft/url-rewrite
+
+Jorani uses icons contained in a woff2 font file, so you must make sure that the following MIME types are configured on IIS: `.woff    application/font-woff` and `.woff2    application/font-woff2`.
 
 For your convinience, a sample IIS7 configuration file is provided in this folder <code>/docs/install/iis7/web.config</code>. You need to copy this file at the root of your Jorani installation and to adapt it to your needs.
 

@@ -1,7 +1,7 @@
 <?php
 /**
  * Email template.You can change the content of this template
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.1.0
@@ -20,7 +20,7 @@
     </head>
     <body>
         <h3>{Title}</h3>
-        {Firstname} {Lastname} cancelled a requested time off. See the <a href="{BaseUrl}leaves/{LeaveId}">details</a> below:<br />
+        <p>{Firstname} {Lastname} would like to cancel a requested time off. See the <a href="{BaseUrl}leaves/{LeaveId}">details</a> below:</p>
         <table border="0">
             <tr>
                 <td>From &nbsp;</td><td>{StartDate}&nbsp;({StartDateType})</td>
@@ -40,9 +40,15 @@
             <tr>
                 <td>Reason &nbsp;</td><td>{Reason}</td>
             </tr>
+           <tr>
+                <td>Last comment &nbsp;</td><td>{Comments}</td>
+            </tr>
+            <tr>
+                <td><a href="{BaseUrl}requests/cancellation/accept/{LeaveId}">Confirm cancellation</a> &nbsp;</td>
+                <td><a href="{BaseUrl}requests?cancel_rejected={LeaveId}">Reject cancellation</a></td>
+            </tr>
         </table>
         <br />
-        You can check the <a href="{BaseUrl}hr/counters/collaborators/{UserId}">leave balance</a> before validating the leave request.
         <hr>
         <h5>*** This is an automatically generated message, please do not reply to this message ***</h5>
     </body>

@@ -1,7 +1,7 @@
-<?php 
+<?php
 /**
  * This view displays a simplified authorization form for OAtuh2 authorization.
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link       https://github.com/bbalet/jorani
  * @since      0.6.0
@@ -17,7 +17,7 @@
     <div class="row">
         <div class="span12">
             <img width="100" src="<?php echo base_url();?>assets/images/logo_simple.png">
-            &nbsp;<i class="icon-retweet"></i>&nbsp;
+            &nbsp;<i class="mdi mdi-twitter-retweet"></i>&nbsp;
             <img width="100" src="<?php echo $iconPath;?>">
         </div>
     </div>

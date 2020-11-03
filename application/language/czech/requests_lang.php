@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link       https://github.com/bbalet/jorani
  * @since      0.6.0
@@ -24,6 +24,8 @@ $lang['requests_index_thead_status'] = 'Stav';
 $lang['requests_index_button_export'] = 'Exportovat seznam';
 $lang['requests_index_button_show_all'] = 'Všechny požadavky';
 $lang['requests_index_button_show_pending'] = 'Nevyřízené žádosti';
+$lang['requests_index_thead_requested_date'] = 'Requested';
+$lang['requests_index_thead_last_change'] = 'Last change';
 
 $lang['requests_collaborators_title'] = 'Seznam mých podřízených';
 $lang['requests_collaborators_description'] = 'Tato obrazovka obsahuje seznam vašich přímých podřízených. Pokud nejste nadřízený, bude tento seznam vždy prázdný.';
@@ -79,3 +81,7 @@ $lang['requests_delegations_confirm_delete_yes'] = 'Ano';
 $lang['requests_balance_title'] = 'Bilance dovolené (podřízení)';
 $lang['requests_balance_description'] = 'Bilance dovolené mých přímých podřízených. Pokud nejste nadřízený, bude tento seznam vždy prázdný.';
 $lang['requests_balance_date_field'] = 'Datum reportu';
+
+$lang['requests_comment_reject_request_title'] = 'Comment';
+$lang['requests_comment_reject_request_button_cancel'] = 'Cancel';
+$lang['requests_comment_reject_request_button_reject'] = 'Reject';

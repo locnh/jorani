@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.1.0
@@ -17,10 +17,14 @@ $lang['email_leave_request_creation_subject'] = 'Demande d\'absence de';
 $lang['email_leave_request_creation_title'] = 'Demande d\'absence';
 $lang['email_leave_request_cancellation_subject'] = 'Demande d\'annulation d\'absence de';
 $lang['email_leave_request_cancellation_title'] = 'Demande d\'annulation d\'absence';
+$lang['email_leave_cancel_accept_subject'] = 'Votre demande d\'annulation d\'absence a été acceptée';
+$lang['email_leave_cancel_reject_subject'] = 'Votre demande d\'annulation d\'absence a été refusée';
 
 $lang['email_leave_request_accept_subject'] = 'Votre demande d\'absence a été acceptée';
 $lang['email_leave_request_reject_subject'] = 'Votre demande d\'absence a été refusée';
 $lang['email_leave_request_validation_title'] = 'Demande d\'absence';
+
+$lang['email_leave_request_reminder'] = '[rappel]';
 
 $lang['email_overtime_request_accept_subject'] = 'Votre déclaration d\'heure supplémentaire a été acceptée';
 $lang['email_overtime_request_reject_subject'] = 'Votre déclaration d\'heure supplémentaire a été refusée';

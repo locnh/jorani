@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.4.2
@@ -128,8 +128,11 @@ $lang['users_employees_thead_id'] = 'ID';
 $lang['users_employees_thead_firstname'] = 'Имя';
 $lang['users_employees_thead_lastname'] = 'Фамилия';
 $lang['users_employees_thead_email'] = 'Эл. почта';
+$lang['users_employees_thead_entity'] = 'Entity';
+
 $lang['users_reset_field_password'] = 'Пароль';
 $lang['users_reset_button_reset'] = 'Reset';
+
 $lang['users_export_title'] = 'Список пользователей';
 $lang['users_export_thead_id'] = 'ID';
 $lang['users_export_thead_firstname'] = 'Имя';

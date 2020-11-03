@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.4.0
@@ -72,6 +72,7 @@ $lang['hr_leaves_thead_tip_edit'] = 'modificar';
 $lang['hr_leaves_thead_tip_accept'] = 'aceptar';
 $lang['hr_leaves_thead_tip_reject'] = 'rechazar';
 $lang['hr_leaves_thead_tip_delete'] = 'suprimir';
+$lang['hr_leaves_thead_tip_history'] = 'show history';
 $lang['hr_leaves_thead_id'] = 'ID';
 $lang['hr_leaves_thead_status'] = 'Estado';
 $lang['hr_leaves_thead_start'] = 'Primera fecha';
@@ -85,6 +86,7 @@ $lang['hr_leaves_popup_delete_message'] = 'Estás a punto de borrar una solicitu
 $lang['hr_leaves_popup_delete_question'] = '¿Quieres continuar?';
 $lang['hr_leaves_popup_delete_button_yes'] = 'Sí';
 $lang['hr_leaves_popup_delete_button_no'] = 'No';
+$lang['hr_leaves_deleted_title'] = 'List of deleted leave requests';
 
 $lang['hr_export_leaves_title'] = 'Lista de permisos solicitados';
 $lang['hr_export_leaves_thead_id'] = 'ID';

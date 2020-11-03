@@ -16,6 +16,8 @@ $lang['leaves_summary_thead_available'] = 'Доступно';
 $lang['leaves_summary_thead_taken'] = 'Використано';
 $lang['leaves_summary_thead_entitled'] = 'Надано';
 $lang['leaves_summary_thead_description'] = 'Опис';
+$lang['leaves_summary_thead_actual'] = 'actual';
+$lang['leaves_summary_thead_simulated'] = 'simulated';
 $lang['leaves_summary_tbody_empty'] = 'Немає наданих або використаних днів за цей період. Зверніться до свого керівника.';
 $lang['leaves_summary_flash_msg_error'] = 'Схоже не те, що у вас немає контракту. Зверніться до свого керівника.';
 $lang['leaves_summary_date_field'] = 'Дата звіту';
@@ -33,6 +35,8 @@ $lang['leaves_index_thead_cause'] = 'Причина';
 $lang['leaves_index_thead_duration'] = 'Тривалість';
 $lang['leaves_index_thead_type'] = 'Тип';
 $lang['leaves_index_thead_status'] = 'Статус';
+$lang['leaves_index_thead_requested_date'] = 'Requested';
+$lang['leaves_index_thead_last_change'] = 'Last change';
 $lang['leaves_index_button_export'] = 'Експортувати список';
 $lang['leaves_index_button_create'] = 'Нова заява';
 $lang['leaves_index_popup_delete_title'] = 'Видалити заяву на відпустку';
@@ -87,6 +91,13 @@ $lang['leaves_validate_mandatory_js_msg'] = '"Поле " + fieldname + " є об
 $lang['leaves_validate_flash_msg_no_contract'] = 'Схоже не те, що у вас немає контракту. Зверніться до свого керівника.';
 $lang['leaves_validate_flash_msg_overlap_period'] = 'Ви не можете створити заяву на відпустку для різних років. Будь ласка створіть дві окремі заяви на відпустку.';
 
+$lang['leaves_cancellation_flash_msg_error'] = 'You can\'t cancel this leave request';
+$lang['leaves_cancellation_flash_msg_success'] = 'The cancellation request has been successfully sent';
+$lang['requests_cancellation_accept_flash_msg_success'] = 'The leave request has been successfully cancelled';
+$lang['requests_cancellation_accept_flash_msg_error'] = 'An error occured while trying to accept the cancellation';
+$lang['requests_cancellation_reject_flash_msg_success'] = 'The leave request has now its original status of Accepted';
+$lang['requests_cancellation_reject_flash_msg_error'] = 'An error occured while trying to reject the cancellation';
+
 $lang['leaves_cancel_flash_msg_error'] = 'You can\'t cancel this leave request';
 $lang['leaves_cancel_flash_msg_success'] = 'The leave request has been successfully cancelled';
 $lang['leaves_cancel_unauthorized_msg_error'] = 'You can\'t cancel a leave request starting in the past. Ask your manager for rejecting it.';
@@ -115,3 +126,12 @@ $lang['leaves_export_thead_cause'] = 'Причина';
 $lang['leaves_export_thead_duration'] = 'Тривалість';
 $lang['leaves_export_thead_type'] = 'Тип';
 $lang['leaves_export_thead_status'] = 'Статус';
+
+$lang['leaves_button_send_reminder'] = 'Send a reminder';
+$lang['leaves_reminder_flash_msg_success'] = 'The reminder email was sent to the manager';
+
+$lang['leaves_comment_title'] = 'Comments';
+$lang['leaves_comment_new_comment'] = 'New comment';
+$lang['leaves_comment_send_comment'] = 'Send comment';
+$lang['leaves_comment_author_saying'] = ' says';
+$lang['leaves_comment_status_changed'] = 'The status of the leave have been changed to ';

@@ -1,7 +1,7 @@
 <?php
 /**
  * Email template.You can change the content of this template
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.1.0
@@ -29,7 +29,7 @@
                 <td>Пароль</td><td>{Password}</td>
             </tr>            
         </table>
-        Вы можете изменить пароль согласно инструкции при входе в <a href="http://jorani.org/how-to-change-my-password.html" title="Link to documentation" target="_blank">систему</a>.
+        Вы можете изменить пароль согласно инструкции при входе в <a href="https://jorani.org/how-to-change-my-password.html" title="Link to documentation" target="_blank">систему</a>.
         <hr>
         <h5>*** Это сообщение создано автоматически, пожалуйста, не отвечайте на него ***</h5>
     </body>

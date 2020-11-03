@@ -1,7 +1,7 @@
-<?php 
+<?php
 /**
  * This view is included into all desktop full views. It contains HTML and CSS definitions.
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link       https://github.com/bbalet/jorani
  * @since      0.1.0
@@ -17,19 +17,15 @@
     <meta name="version" content="0.6.0">
     <link href="<?php echo base_url();?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url();?>assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>assets/css/jorani-0.5.1.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/dist/legacy.css">
 <?php CI_Controller::get_instance()->load->helper('language');
 $this->lang->load('global', $language);?>
-    <!--[if lte IE 8]>
+    <!--[if lte IE 9]>
     <script type="text/javascript">
     alert("<?php echo lang('global_msg_old_browser'); ?>");
     </script>
     <![endif]-->
-    <!--[if lt IE 9]>
-    <script src="<?php echo base_url();?>assets/js/html5shiv.min.js"></script>
-    <![endif]-->
-    <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/dist/legacy.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>assets/bootstrap/js/bootstrap.min.js"></script>
     <link rel="icon" type="image/x-icon" href="<?php echo base_url();?>favicon.ico" sizes="32x32">
     <style>
@@ -44,7 +40,7 @@ if (!is_null($fonts)) {
     body, button, input, select, .ui-datepicker, .selectize-input {
         font-family: '<?php echo $fonts[$language_code]['name'];?>' !important;
     }
-<?php 
+<?php
         }
     } ?>
 </style>

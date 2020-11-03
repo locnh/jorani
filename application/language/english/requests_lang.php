@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.1.0
@@ -20,6 +20,8 @@ $lang['requests_index_thead_enddate'] = 'End Date';
 $lang['requests_index_thead_duration'] = 'Duration';
 $lang['requests_index_thead_type'] = 'Type';
 $lang['requests_index_thead_status'] = 'Status';
+$lang['requests_index_thead_requested_date'] = 'Requested';
+$lang['requests_index_thead_last_change'] = 'Last change';
 
 $lang['requests_collaborators_title'] = 'List of my subordinates';
 $lang['requests_collaborators_description'] = 'This screen lists your direct report subordinates. If you are not a manager, this list will always be empty.';
@@ -80,3 +82,7 @@ $lang['requests_delegations_confirm_delete_yes'] = 'Yes';
 $lang['requests_balance_title'] = 'Leave balance (subordinates)';
 $lang['requests_balance_description'] = 'Leave balance of my direct report subordinates. If you are not a manager, this list will always be empty.';
 $lang['requests_balance_date_field'] = 'Date of report';
+
+$lang['requests_comment_reject_request_title'] = 'Comment';
+$lang['requests_comment_reject_request_button_cancel'] = 'Cancel';
+$lang['requests_comment_reject_request_button_reject'] = 'Reject';

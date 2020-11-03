@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.4.2
@@ -72,6 +72,7 @@ $lang['hr_leaves_thead_tip_edit'] = 'редактировать';
 $lang['hr_leaves_thead_tip_accept'] = 'утвердить';
 $lang['hr_leaves_thead_tip_reject'] = 'отклонить';
 $lang['hr_leaves_thead_tip_delete'] = 'удалить';
+$lang['hr_leaves_thead_tip_history'] = 'show history';
 $lang['hr_leaves_thead_id'] = 'ID';
 $lang['hr_leaves_thead_status'] = 'Состояние';
 $lang['hr_leaves_thead_start'] = 'Дата начала';
@@ -85,6 +86,7 @@ $lang['hr_leaves_popup_delete_message'] = 'Вы собираетесь удал�
 $lang['hr_leaves_popup_delete_question'] = 'Продолжить?';
 $lang['hr_leaves_popup_delete_button_yes'] = 'Да';
 $lang['hr_leaves_popup_delete_button_no'] = 'Нет';
+$lang['hr_leaves_deleted_title'] = 'List of deleted leave requests';
 
 $lang['hr_export_leaves_title'] = 'Список запрошенных отпусков';
 $lang['hr_export_leaves_thead_id'] = 'ID';

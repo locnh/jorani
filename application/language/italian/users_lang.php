@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.1.0
@@ -10,8 +10,8 @@
 
 
 $lang['users_index_title'] = 'Elenco utenti';
-$lang['users_index_thead_tip_active'] = 'Active';
-$lang['users_index_thead_tip_inactive'] = 'Inactive';
+$lang['users_index_thead_tip_active'] = 'Attivo';
+$lang['users_index_thead_tip_inactive'] = 'Inattivo';
 $lang['users_index_thead_tip_edit'] = 'modifica dettagli utente';
 $lang['users_index_thead_tip_delete'] = 'elimina utente';
 $lang['users_index_thead_tip_reset'] = 'reimposta password';
@@ -127,8 +127,11 @@ $lang['users_employees_thead_id'] = 'ID';
 $lang['users_employees_thead_firstname'] = 'Nome';
 $lang['users_employees_thead_lastname'] = 'Cognome';
 $lang['users_employees_thead_email'] = 'E-mail';
+$lang['users_employees_thead_entity'] = 'Entity';
+
 $lang['users_reset_field_password'] = 'Password';
 $lang['users_reset_button_reset'] = 'Reset';
+
 $lang['users_export_title'] = 'Elenco utenti';
 $lang['users_export_thead_id'] = 'ID';
 $lang['users_export_thead_firstname'] = 'Nome';

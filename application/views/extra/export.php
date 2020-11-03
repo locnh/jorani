@@ -1,13 +1,22 @@
 <?php
 /**
  * This view builds a Spreadsheet file containing the list of overtime requests declared by the connected employee.
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.2.0
  */
 
-$sheet = $this->excel->setActiveSheetIndex(0);
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Style\Border;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
+use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
+
+$spreadsheet = new Spreadsheet();
+$sheet = $spreadsheet->getActiveSheet();
+
 $sheet->setTitle(mb_strimwidth(lang('extra_export_title'), 0, 28, "..."));  //Maximum 31 characters allowed in sheet title.
 $sheet->setCellValue('A1', lang('extra_export_thead_id'));
 $sheet->setCellValue('B1', lang('extra_export_thead_date'));
@@ -15,7 +24,7 @@ $sheet->setCellValue('C1', lang('extra_export_thead_duration'));
 $sheet->setCellValue('D1', lang('extra_export_thead_cause'));
 $sheet->setCellValue('E1', lang('extra_export_thead_status'));
 $sheet->getStyle('A1:E1')->getFont()->setBold(true);
-$sheet->getStyle('A1:E1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+$sheet->getStyle('A1:E1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
 $extras = $this->overtime_model->getExtrasOfEmployee($this->user_id);
 
@@ -36,4 +45,5 @@ foreach(range('A', 'E') as $colD) {
     $sheet->getColumnDimension($colD)->setAutoSize(TRUE);
 }
 
-exportSpreadsheet($this, 'extra');
+$spreadsheet->exportName = 'extra';
+writeSpreadsheet($spreadsheet);

@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.1.0
@@ -27,7 +27,7 @@ $lang['hr_employees_thead_contract'] = 'Contratto';
 $lang['hr_employees_thead_manager'] = 'Gestore';
 $lang['hr_employees_thead_identifier'] = 'identificatore';
 $lang['hr_employees_thead_datehired'] = 'Data assunzione';
-$lang['hr_employees_thead_position'] = 'Position';
+$lang['hr_employees_thead_position'] = 'Posizione';
 $lang['hr_employees_button_create_user'] = 'Crea';
 $lang['hr_employees_button_export'] = 'Esporta questo elenco';
 $lang['hr_employees_popup_entitlment_title'] = 'Giorni spettanti';
@@ -42,8 +42,8 @@ $lang['hr_employees_description'] = 'Click tasto destro / pressione lunga';
 $lang['hr_employees_field_subdepts'] = 'Includi sotto-reparti';
 
 $lang['hr_employees_button_all'] = 'All';
-$lang['hr_employees_button_active'] = 'Active';
-$lang['hr_employees_button_inactive'] = 'Inactive';
+$lang['hr_employees_button_active'] = 'Attivo';
+$lang['hr_employees_button_inactive'] = 'Inattivo';
 $lang['hr_employees_button_selection'] = 'Selection';
 $lang['hr_employees_button_select_all'] = 'Select all';
 $lang['hr_employees_button_deselect_all'] = 'Deselect all';
@@ -72,6 +72,7 @@ $lang['hr_leaves_thead_tip_edit'] = 'modifica';
 $lang['hr_leaves_thead_tip_accept'] = 'accetta';
 $lang['hr_leaves_thead_tip_reject'] = 'rifiuta';
 $lang['hr_leaves_thead_tip_delete'] = 'elimina';
+$lang['hr_leaves_thead_tip_history'] = 'show history';
 $lang['hr_leaves_thead_id'] = 'ID';
 $lang['hr_leaves_thead_status'] = 'Stato';
 $lang['hr_leaves_thead_start'] = 'Data inizio';
@@ -85,6 +86,7 @@ $lang['hr_leaves_popup_delete_message'] = 'Stai per cancellare una richiesta di 
 $lang['hr_leaves_popup_delete_question'] = 'Vuoi proseguire?';
 $lang['hr_leaves_popup_delete_button_yes'] = 'Si';
 $lang['hr_leaves_popup_delete_button_no'] = 'No';
+$lang['hr_leaves_deleted_title'] = 'List of deleted leave requests';
 
 $lang['hr_export_leaves_title'] = 'Elenco ferie richieste';
 $lang['hr_export_leaves_thead_id'] = 'ID';

@@ -1,7 +1,7 @@
 <?php
 /**
  * Email template.You can change the content of this template
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.1.0
@@ -40,12 +40,15 @@
             <tr>
                 <td>Cause &nbsp;</td><td>{Reason}</td>
             </tr>
+            <tr>
+              <td>Dernier Commentaire &nbsp;</td><td>{Comments}</td>
+            </tr>
+            <tr>
+                <td><a href="{BaseUrl}requests/accept/{LeaveId}">Accepter</a> &nbsp;</td>
+                <td><a href="{BaseUrl}requests?rejected={LeaveId}">Refuser</a></td>
+            </tr>
         </table>
         <br />
-        <p>
-            <a href="{BaseUrl}requests/accept/{LeaveId}">Accepter</a>&nbsp;
-            <a href="{BaseUrl}requests/reject/{LeaveId}">Refuser</a>
-        </p>
         <p>Vous pouvez vérifier <a href="{BaseUrl}hr/counters/collaborators/{UserId}">l'état des congés</a> avant de valider cette demande.</p>
         <hr>
         <h5>*** Ceci est un message généré automatiquement, veuillez ne pas répondre à ce message ***</h5>

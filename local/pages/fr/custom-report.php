@@ -13,7 +13,7 @@
                 <select name="cboYear">
                     <?php
                     $entity_name = $this->input->get('txtEntity', TRUE);
-                    if ($this->input->get('cboYear', TRUE) === FALSE) {
+                    if (is_null($this->input->get('cboYear', TRUE))) {
                         $year =  date('Y');
                     } else {
                         $year =  $this->input->get('cboYear');
@@ -60,7 +60,7 @@
 </div>
 
 <!--We can load any asset, just use the base_url methos for safer URLs//-->
-<script src="<?php echo base_url();?>assets/js/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
 <script type="text/javascript">
 function select_entity() {
     entity = $('#organization').jstree('get_selected')[0];
@@ -136,7 +136,7 @@ $this->db->select('types.name as type_name');
 $this->db->from('leaves');
 $this->db->join('types', 'leaves.type = types.id');
 $this->db->where('leaves.status', 3);
-if ($this->input->get('cboYear', TRUE) === FALSE) {
+if (is_null($this->input->get('cboYear', TRUE))) {
     $this->db->where('YEAR(startdate) = YEAR(CURDATE())');
 } else {
     $this->db->where('YEAR(startdate) = ' . $this->db->escape($this->input->get('cboYear', TRUE)));
@@ -210,7 +210,7 @@ $url_export = base_url() . 'excel-export' .
         '&chkIncludeChildren=' . $include_children;
  ?>
 
-<a href="<?php echo base_url();?>sample-page" class="btn btn-primary"><i class="icon-arrow-left icon-white"></i>&nbsp;Retour au formulaire</a>
-<a href="<?php echo $url_export; ?>" class="btn btn-primary"><i class="fa fa-file-excel-o"></i>&nbsp; Exporter vers Excel</a>
+<a href="<?php echo base_url();?>sample-page" class="btn btn-primary"><i class="mdi mdi-arrow-left-bold"></i>&nbsp;Retour au formulaire</a>
+<a href="<?php echo $url_export; ?>" class="btn btn-primary"><i class="mdi mdi-download"></i>&nbsp; Exporter vers Excel</a>
 
 <div class="row-fluid"><div class="span12">&nbsp;</div></div>

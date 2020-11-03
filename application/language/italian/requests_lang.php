@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.1.0
@@ -13,6 +13,7 @@ $lang['requests_index_description'] = 'Questa pagina elenca le richieste di feri
 $lang['requests_index_thead_tip_view'] = 'vedi';
 $lang['requests_index_thead_tip_accept'] = 'accetta';
 $lang['requests_index_thead_tip_reject'] = 'rifiuta';
+$lang['requests_index_thead_tip_history'] = 'show history';
 $lang['requests_index_thead_id'] = 'ID';
 $lang['requests_index_thead_fullname'] = 'Nome completo';
 $lang['requests_index_thead_startdate'] = 'Data inizio';
@@ -20,6 +21,8 @@ $lang['requests_index_thead_enddate'] = 'Data fine';
 $lang['requests_index_thead_duration'] = 'Durata';
 $lang['requests_index_thead_type'] = 'Tipologia';
 $lang['requests_index_thead_status'] = 'Stato';
+$lang['requests_index_thead_requested_date'] = 'Requested';
+$lang['requests_index_thead_last_change'] = 'Last change';
 
 $lang['requests_collaborators_title'] = 'Elenco dei miei collaboratori';
 $lang['requests_collaborators_description'] = 'Questa pagina elenca i tuoi collaboratori. Se non sei un manager, questo elenco sarà sempre vuoto.';
@@ -27,7 +30,7 @@ $lang['requests_collaborators_thead_id'] = 'ID';
 $lang['requests_collaborators_thead_link_balance'] = 'Saldo ferie';
 $lang['requests_collaborators_thead_link_presence'] = 'Report presenze';
 $lang['requests_collaborators_thead_link_year'] = 'Yearly calendar';
-$lang['requests_collaborators_thead_link_create_leave'] = 'Create a leave request in behalf of this collaborator';
+$lang['requests_collaborators_thead_link_create_leave'] = 'Crea una richiesta di ferie per conto di questo collaboratore';
 $lang['requests_collaborators_thead_firstname'] = 'Nome';
 $lang['requests_collaborators_thead_lastname'] = 'Cognome';
 $lang['requests_collaborators_thead_email'] = 'E-mail';
@@ -80,3 +83,7 @@ $lang['requests_delegations_confirm_delete_yes'] = 'Si';
 $lang['requests_balance_title'] = 'Leave balance (subordinates)';
 $lang['requests_balance_description'] = 'Leave balance of my direct report subordinates. If you are not a manager, this list will always be empty.';
 $lang['requests_balance_date_field'] = 'Date of report';
+
+$lang['requests_comment_reject_request_title'] = 'Comment';
+$lang['requests_comment_reject_request_button_cancel'] = 'Cancel';
+$lang['requests_comment_reject_request_button_reject'] = 'Reject';

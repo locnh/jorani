@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.1.0
@@ -17,11 +17,14 @@ $lang['email_leave_request_creation_subject'] = 'Leave Request from';
 $lang['email_leave_request_creation_title'] = 'Leave Request';
 $lang['email_leave_request_cancellation_subject'] = 'Leave Request Cancellation from';
 $lang['email_leave_request_cancellation_title'] = 'Leave Request Cancellation';
-
+$lang['email_leave_cancel_accept_subject'] = 'Your Cancellation Request has been accepted';
+$lang['email_leave_cancel_reject_subject'] = 'Your Cancellation Request has been rejected';
 
 $lang['email_leave_request_accept_subject'] = 'Your leave request has been accepted';
 $lang['email_leave_request_reject_subject'] = 'Your leave request has been rejected';
 $lang['email_leave_request_validation_title'] = 'Leave Request';
+
+$lang['email_leave_request_reminder'] = '[reminder]';
 
 $lang['email_overtime_request_accept_subject'] = 'Your overtime request has been accepted';
 $lang['email_overtime_request_reject_subject'] = 'Your overtime request has been rejected';

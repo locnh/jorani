@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.1.0
@@ -15,6 +15,7 @@ $lang['menu_banner_tip_myprofile'] = 'Vedo le mie informazioni personali';
 $lang['menu_banner_tip_reset'] = 'reimposta password';
 $lang['menu_password_popup_title'] = 'Cambio password';
 $lang['menu_password_popup_button_cancel'] = 'Annulla';
+$lang['menu_leaves_request_button'] = 'New request';
 
 $lang['menu_admin_title'] = 'Admin';
 $lang['menu_admin_list_users'] = 'Elenco utenti';

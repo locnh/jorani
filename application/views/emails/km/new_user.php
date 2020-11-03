@@ -1,7 +1,7 @@
 <?php
 /**
  * Email template.You can change the content of this template
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.1.0
@@ -28,7 +28,7 @@
             </tr>            
         </table>
         <?php if ($this->config->item('ldap_enabled') == FALSE) { ?>
-        <a href="http://jorani.org/how-to-change-my-password.html" title="តំណភ្ជាប់ទៅឯកសារ" target="_blank">នៅពេលដែលបានភ្ជាប់អ្នកអាចផ្លាស់ប្តូរពាក្យសម្ងាត់របស់អ្នកជាការពន្យល់នៅទីនេះ</a>.
+        <a href="https://jorani.org/how-to-change-my-password.html" title="តំណភ្ជាប់ទៅឯកសារ" target="_blank">នៅពេលដែលបានភ្ជាប់អ្នកអាចផ្លាស់ប្តូរពាក្យសម្ងាត់របស់អ្នកជាការពន្យល់នៅទីនេះ</a>.
         <?php } ?>
     </body>
 </html>

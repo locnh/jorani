@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license     http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link          https://github.com/bbalet/jorani
  * @since       0.4.6
@@ -13,6 +13,7 @@ $lang['requests_index_description'] = 'Bu ekran size gönderilen fazla mesai tal
 $lang['requests_index_thead_tip_view'] = 'görüntüle';
 $lang['requests_index_thead_tip_accept'] = 'kabul et';
 $lang['requests_index_thead_tip_reject'] = 'reddet';
+$lang['requests_index_thead_tip_history'] = 'show history';
 $lang['requests_index_thead_id'] = 'ID';
 $lang['requests_index_thead_fullname'] = 'Tam adı';
 $lang['requests_index_thead_startdate'] = 'Başlangıç Tarihi';
@@ -20,6 +21,8 @@ $lang['requests_index_thead_enddate'] = 'Bitiş Tarihi';
 $lang['requests_index_thead_duration'] = 'Süre';
 $lang['requests_index_thead_type'] = 'Tür';
 $lang['requests_index_thead_status'] = 'Durum';
+$lang['requests_index_thead_requested_date'] = 'Requested';
+$lang['requests_index_thead_last_change'] = 'Last change';
 
 $lang['requests_collaborators_title'] = 'Astlarımın listesi';
 $lang['requests_collaborators_description'] = 'Bu ekran size gönderilen izin taleplerini listeler. Eğer bir yönetici değilseniz, bu liste her zaman boş olacaktır.';
@@ -78,3 +81,7 @@ $lang['requests_delegations_confirm_delete_yes'] = 'Evet';
 $lang['requests_balance_title'] = 'Leave balance (subordinates)';
 $lang['requests_balance_description'] = 'Leave balance of my direct report subordinates. If you are not a manager, this list will always be empty.';
 $lang['requests_balance_date_field'] = 'Rapor tarihi';
+
+$lang['requests_comment_reject_request_title'] = 'Comment';
+$lang['requests_comment_reject_request_button_cancel'] = 'Cancel';
+$lang['requests_comment_reject_request_button_reject'] = 'Reject';

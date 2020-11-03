@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.4.2
@@ -21,3 +21,4 @@ $lang['session_login_msg_password_sent'] = 'Пароль был отправле
 $lang['session_login_flash_bad_credentials'] = 'Неверный логин или пароль';
 $lang['session_login_flash_change_language'] = 'Язык успешно установлен на';
 $lang['session_login_flash_account_disabled'] = 'Your account is disabled. Please contact your HR Officer / Manager.';
+$lang['session_login_no_slo'] = 'Вы вышли из Jorani, но все еще вошли в свой провайдер идентификации Нажмите на Вход, чтобы автоматически войти в Jorani.';

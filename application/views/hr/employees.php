@@ -1,7 +1,7 @@
 <?php
 /**
  * This view displays the list of employees.
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.1.0
@@ -10,7 +10,7 @@
 
 <div class="row-fluid">
     <div class="span12">
-        
+
 <h2><?php echo lang('hr_employees_title');?>&nbsp;<?php echo $help;?></h2>
 
 <?php echo $flash_partial_view;?>
@@ -43,23 +43,23 @@
                 <div class="input-prepend input-append">
                     <div class="btn-group">
                         <div class="btn-group" data-toggle="buttons-radio">
-                            <button id="cmdGreater1" type="button" class="btn active"><i class="fa fa-chevron-right"></i></button>
-                            <button id="cmdLesser1" type="button" class="btn"><i class="fa fa-chevron-left"></i></button>
+                            <button id="cmdGreater1" type="button" class="btn active"><i class="mdi mdi-chevron-right"></i></button>
+                            <button id="cmdLesser1" type="button" class="btn"><i class="mdi mdi-chevron-left"></i></button>
                         </div>
                         <input type="text" id="viz_datehired1" class="input-small" readonly />
-                        <button id="cmdResetDate1" type="button" class="btn"><i class="fa fa-times"></i></button>
-                    </div>                            
+                        <button id="cmdResetDate1" type="button" class="btn"><i class="mdi mdi-close"></i></button>
+                    </div>
                 </div>
                 &nbsp;&mdash;&nbsp;
                 <div class="input-prepend input-append">
                     <div class="btn-group">
                         <div class="btn-group" data-toggle="buttons-radio">
-                            <button id="cmdGreater2" type="button" class="btn"><i class="fa fa-chevron-right"></i></button>
-                            <button id="cmdLesser2" type="button" class="btn active"><i class="fa fa-chevron-left"></i></button>
+                            <button id="cmdGreater2" type="button" class="btn"><i class="mdi mdi-chevron-right"></i></button>
+                            <button id="cmdLesser2" type="button" class="btn active"><i class="mdi mdi-chevron-left"></i></button>
                         </div>
                         <input type="text" id="viz_datehired2" class="input-small" readonly />
-                        <button id="cmdResetDate2" type="button" class="btn"><i class="fa fa-times"></i></button>
-                    </div>                            
+                        <button id="cmdResetDate2" type="button" class="btn"><i class="mdi mdi-close"></i></button>
+                    </div>
                 </div>
                 <input type="hidden" name="datehired1" id="datehired1" />
                 <input type="hidden" name="datehired2" id="datehired2" />
@@ -73,21 +73,21 @@
                 <div class="pull-right">
                     <div class="btn-group">
                         <button id="cmdSelection" class="btn dropdown-toggle btn-primary" data-toggle="dropdown">
-                          <i class="fa fa-pencil"></i>&nbsp;<?php echo lang('hr_employees_button_selection');?>&nbsp;<span class="caret"></span>
+                          <i class="mdi mdi-pencil"></i>&nbsp;<?php echo lang('hr_employees_button_selection');?>&nbsp;<span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="#" id="cmdCreateRequest"><i class="fa fa-plus"></i>&nbsp;<?php echo lang('hr_employees_button_create_request');?></a></li>
-                            <li><a href="#" id="cmdSelectManager"><i class="fa fa-user"></i>&nbsp;<?php echo lang('hr_employees_button_select_manager');?></a></li>
-                            <li><a href="#" id="cmdAddEntitlments"><i class="fa fa-pencil-square-o"></i>&nbsp;<?php echo lang('hr_employees_button_entitleddays');?></a></li>
-                            <li><a href="#" id="cmdSelectContract"><i class="fa fa-file-text-o"></i>&nbsp;<?php echo lang('hr_employees_button_select_contract');?></a></li>
-                            <li><a href="#" id="cmdChangeEntity"><i class="fa fa-sitemap"></i>&nbsp;<?php echo lang('hr_employees_button_select_entity');?></a></li>
+                            <li><a href="#" id="cmdCreateRequest"><i class="mdi mdi-file-plus nolink"></i>&nbsp;<?php echo lang('hr_employees_button_create_request');?></a></li>
+                            <li><a href="#" id="cmdSelectManager"><i class="mdi mdi-account-supervisor"></i>&nbsp;<?php echo lang('hr_employees_button_select_manager');?></a></li>
+                            <li><a href="#" id="cmdAddEntitlments"><i class="mdi mdi-pencil-box-outline"></i>&nbsp;<?php echo lang('hr_employees_button_entitleddays');?></a></li>
+                            <li><a href="#" id="cmdSelectContract"><i class="mdi mdi-file-document-outline"></i>&nbsp;<?php echo lang('hr_employees_button_select_contract');?></a></li>
+                            <li><a href="#" id="cmdChangeEntity"><i class="mdi mdi-sitemap"></i>&nbsp;<?php echo lang('hr_employees_button_select_entity');?></a></li>
                             <li class="divider"></li>
-                            <li><a href="#" id="cmdSelectAll"><i class="fa fa-circle"></i>&nbsp;<?php echo lang('hr_employees_button_select_all');?></a></li>
-                            <li><a href="#" id="cmdDeselectAll"><i class="fa fa-circle-o"></i>&nbsp;<?php echo lang('hr_employees_button_deselect_all');?></a></li>
+                            <li><a href="#" id="cmdSelectAll"><i class="mdi mdi-checkbox-blank-circle"></i>&nbsp;<?php echo lang('hr_employees_button_select_all');?></a></li>
+                            <li><a href="#" id="cmdDeselectAll"><i class="mdi mdi-checkbox-blank-circle-outline"></i>&nbsp;<?php echo lang('hr_employees_button_deselect_all');?></a></li>
                         </ul>
                     </div>
-                  &nbsp;<a href="#" id="cmdExportEmployees" class="btn btn-primary"><i class="fa fa-file-excel-o"></i>&nbsp;<?php echo lang('hr_employees_button_export');?></a>
-                  &nbsp;<a href="<?php echo base_url();?>users/create" class="btn btn-primary"><i class="icon-plus-sign icon-white"></i>&nbsp;<?php echo lang('hr_employees_button_create_user');?></a>
+                  &nbsp;<a href="#" id="cmdExportEmployees" class="btn btn-primary"><i class="mdi mdi-download"></i>&nbsp;<?php echo lang('hr_employees_button_export');?></a>
+                  &nbsp;<a href="<?php echo base_url();?>users/create" class="btn btn-primary"><i class="mdi mdi-account-plus"></i>&nbsp;<?php echo lang('hr_employees_button_create_user');?></a>
               </div>
             </div>
         </div>
@@ -111,7 +111,7 @@
                             <th><?php echo lang('hr_employees_thead_position');?></th>
                         </tr>
                     </thead>
-                    <tbody class="context" data-toggle="context" data-target="#context-menu">
+                    <tbody class="employees-area">
                     </tbody>
                 </table>
             </div>
@@ -160,7 +160,7 @@
         <?php $index = 0;
              foreach ($contracts as $contract) { ?>
             <option value="<?php echo $contract['id'] ?>" <?php if ($index == 0) echo "selected"; ?>><?php echo $contract['name']; ?></option>
-        <?php 
+        <?php
                 $index++;
             } ?>
         </select>
@@ -188,8 +188,8 @@
             <select name="typeEnt" id="typeEnt" required>
             <?php foreach ($types as $types_item): ?>
                 <option value="<?php echo $types_item['id'] ?>" <?php if ($types_item['id'] == 1) echo "selected" ?>><?php echo $types_item['name'] ?></option>
-            <?php endforeach ?> 
-            </select>    
+            <?php endforeach ?>
+            </select>
             <label for="daysEnt" required><?php echo lang('entitleddays_user_index_field_days');?></label>
             <input type="text" class="input-mini" name="daysEnt" id="daysEnt" />
             <label for="descriptionEnt"><?php echo lang('entitleddays_user_index_field_description');?></label>
@@ -259,35 +259,19 @@
     </div>
 </div>
 
-<div id="context-menu">
-  <ul class="dropdown-menu" role="menu">
-        <li><a tabindex="-1" href="#" data-action="<?php echo base_url();?>hr/leaves/create/{id}"><i class="icon-plus"></i>&nbsp;<?php echo lang('hr_employees_thead_link_create_leave');?></a></li>
-        <li><a tabindex="-1" href="#" data-action="<?php echo base_url();?>users/edit/{id}?source=hr%2Femployees"><i class="icon-pencil"></i>&nbsp;<?php echo lang('hr_employees_thead_tip_edit');?></a></li>
-        <li><a tabindex="-1" href="#" data-action="<?php echo base_url();?>entitleddays/user/{id}"><i class="icon-edit"></i>&nbsp;<?php echo lang('hr_employees_thead_tip_entitlment');?></a></li>
-        <li><a tabindex="-1" href="#" data-action="<?php echo base_url();?>hr/leaves/{id}"><i class="icon-list-alt"></i>&nbsp;<?php echo lang('hr_employees_thead_link_leaves');?></a></li>
-        <?php if ($this->config->item('disable_overtime') == FALSE) { ?>
-        <li><a tabindex="-1" href="#" data-action="<?php echo base_url();?>hr/overtime/{id}"><i class="icon-list-alt"></i>&nbsp;<?php echo lang('hr_employees_thead_link_extra');?></a></li>
-        <?php } ?>
-        <li><a tabindex="-1" href="#" data-action="<?php echo base_url();?>hr/counters/employees/{id}"><i class="icon-info-sign"></i>&nbsp;<?php echo lang('hr_employees_thead_link_balance');?></a></li>
-        <li><a tabindex="-1" href="#" data-action="<?php echo base_url();?>hr/presence/employees/{id}"><i class="fa fa-pie-chart"></i>&nbsp;<?php echo lang('hr_employees_thead_link_presence');?></a></li>
-        <li><a tabindex="-1" href="#" data-action="<?php echo base_url();?>calendar/year/{id}"><i class="icon-calendar"></i>&nbsp;<?php echo lang('hr_employees_thead_link_calendar');?></a></li>
-        <li><a tabindex="-1" href="#" data-action="<?php echo base_url();?>requests/delegations/{id}"><i class="icon-share-alt"></i>&nbsp;<?php echo lang('hr_employees_thead_link_delegation');?></a></li>
-  </ul>
-</div>
-
 <div class="modal hide fade" id="frmContextMenu">
     <div class="modal-body">
-        <a class="context-mobile" href="<?php echo base_url();?>hr/leaves/create/{id}"><i class="icon-plus"></i>&nbsp;<?php echo lang('hr_employees_thead_link_create_leave');?></a><br />
-        <a class="context-mobile" href="<?php echo base_url();?>users/edit/{id}?source=hr%2Femployees"><i class="icon-pencil"></i>&nbsp;<?php echo lang('hr_employees_thead_tip_edit');?></a><br />
-        <a class="context-mobile" href="<?php echo base_url();?>entitleddays/user/{id}"><i class="icon-edit"></i>&nbsp;<?php echo lang('hr_employees_thead_tip_entitlment');?></a><br />
-        <a class="context-mobile" href="<?php echo base_url();?>hr/leaves/{id}"><i class="icon-list-alt"></i>&nbsp;<?php echo lang('hr_employees_thead_link_leaves');?></a><br />
+        <a class="context" href="<?php echo base_url();?>hr/leaves/create/{id}"><i class="mdi mdi-file-plus nolink"></i>&nbsp;<?php echo lang('hr_employees_thead_link_create_leave');?></a><br />
+        <a class="context" href="<?php echo base_url();?>users/edit/{id}?source=hr%2Femployees"><i class="mdi mdi-account-edit nolink"></i>&nbsp;<?php echo lang('hr_employees_thead_tip_edit');?></a><br />
+        <a class="context" href="<?php echo base_url();?>entitleddays/user/{id}"><i class="mdi mdi-pencil-box-outline nolink"></i>&nbsp;<?php echo lang('hr_employees_thead_tip_entitlment');?></a><br />
+        <a class="context" href="<?php echo base_url();?>hr/leaves/{id}"><i class="mdi mdi-format-list-bulleted nolink"></i>&nbsp;<?php echo lang('hr_employees_thead_link_leaves');?></a><br />
         <?php if ($this->config->item('disable_overtime') == FALSE) { ?>
-        <a class="context-mobile" href="<?php echo base_url();?>hr/overtime/{id}"><i class="icon-list-alt"></i>&nbsp;<?php echo lang('hr_employees_thead_link_extra');?></a><br />
+        <a class="context" href="<?php echo base_url();?>hr/overtime/{id}"><i class="mdi mdi-format-list-bulleted nolink"></i>&nbsp;<?php echo lang('hr_employees_thead_link_extra');?></a><br />
         <?php } ?>
-        <a class="context-mobile" href="<?php echo base_url();?>hr/counters/employees/{id}"><i class="icon-info-sign"></i>&nbsp;<?php echo lang('hr_employees_thead_link_balance');?></a><br />
-        <a class="context-mobile" href="<?php echo base_url();?>hr/presence/employees/{id}"><i class="fa fa-pie-chart" style="color:black;"></i>&nbsp;<?php echo lang('hr_employees_thead_link_presence');?></a><br />
-        <a class="context-mobile" href="<?php echo base_url();?>calendar/year/{id}"><i class="icon-calendar"></i>&nbsp;<?php echo lang('hr_employees_thead_link_calendar');?></a><br />
-        <a class="context-mobile" href="<?php echo base_url();?>requests/delegations/{id}"><i class="icon-share-alt"></i>&nbsp;<?php echo lang('hr_employees_thead_link_delegation');?></a>
+        <a class="context" href="<?php echo base_url();?>hr/counters/employees/{id}"><i class="mdi mdi-information-outline nolink"></i>&nbsp;<?php echo lang('hr_employees_thead_link_balance');?></a><br />
+        <a class="context" href="<?php echo base_url();?>hr/presence/employees/{id}"><i class="mdi mdi-chart-pie nolink"></i>&nbsp;<?php echo lang('hr_employees_thead_link_presence');?></a><br />
+        <a class="context" href="<?php echo base_url();?>calendar/year/{id}"><i class="mdi mdi-calendar-text nolink"></i>&nbsp;<?php echo lang('hr_employees_thead_link_calendar');?></a><br />
+        <a class="context" href="<?php echo base_url();?>requests/delegations/{id}"><i class="mdi mdi-share nolink"></i>&nbsp;<?php echo lang('hr_employees_thead_link_delegation');?></a>
   </div>
 </div>
 
@@ -305,16 +289,12 @@
 <link href="<?php echo base_url();?>assets/datatable/ColReorder-1.3.1/css/colReorder.dataTables.min.css" rel="stylesheet">
 <link href="<?php echo base_url();?>assets/datatable/Select-1.1.2/css/select.dataTables.min.css" rel="stylesheet">
 <link rel="stylesheet" href="<?php echo base_url();?>assets/css/flick/jquery-ui.custom.min.css">
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/moment-with-locales.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/datatable/DataTables-1.10.11/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/datatable/Buttons-1.1.2/js/dataTables.buttons.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/datatable/Buttons-1.1.2/js/buttons.colVis.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/datatable/ColReorder-1.3.1/js/dataTables.colReorder.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/datatable/Select-1.1.2/js/dataTables.select.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootbox.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.pers-brow.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/context.menu.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/toe.min.js"></script>
 <script src="<?php echo base_url();?>assets/js/jquery-ui.custom.min.js"></script>
 <?php //Prevent HTTP-404 when localization isn't needed
 if ($language_code != 'en') { ?>
@@ -325,7 +305,6 @@ if ($language_code != 'en') { ?>
 var entity = 0; //Root of the tree by default
 var entityName = '';
 var includeChildren = true;
-var contextObject;
 var contextSelectEntity = "select";
 var filterActive = "all"; //active (only), inactive (only), all
 var oTable;
@@ -343,9 +322,9 @@ function select_entity() {
         includeChildren = $('#chkIncludeChildren').is(':checked');
         $('#entity').val(entity);
         $('#txtEntity').val(entityName);
-        $.cookie('entity', entity);
-        $.cookie('entityName', entityName);
-        $.cookie('includeChildren', includeChildren);
+        Cookies.set('entity', entity);
+        Cookies.set('entityName', entityName);
+        Cookies.set('includeChildren', includeChildren);
         refreshDataTable();
     } else {
         //"change": Move selected employees to another entity
@@ -495,7 +474,7 @@ function add_entitleddays() {
         bootbox.alert(<?php echo lang('entitleddays_user_mandatory_js_msg');?>);
         return;
     }
-    
+
     //Call a web service that changes the entitlements of a list of employees
     $('#frmModalAjaxWait').modal('show');
     $.ajax({
@@ -517,16 +496,6 @@ function add_entitleddays() {
     $("#frmAddEntitledDays").modal('hide');
 }
 
-//Prevent text selection after double click
-function clearSelection() {
-    if(document.selection && document.selection.empty) {
-        document.selection.empty();
-    } else if(window.getSelection) {
-        var sel = window.getSelection();
-        sel.removeAllRanges();
-    }
-}
-
 $(function () {
 <?php if ($this->config->item('csrf_protection') == TRUE) {?>
     $.ajaxSetup({
@@ -535,67 +504,56 @@ $(function () {
         }
     });
 <?php }?>
-    
+
     //Global Ajax error handling mainly used for session expiration
     $( document ).ajaxError(function(event, jqXHR, settings, errorThrown) {
         $('#frmModalAjaxWait').modal('hide');
         if (jqXHR.status == 401) {
             bootbox.alert("<?php echo lang('global_ajax_timeout');?>", function() {
-                //After the login page, we'll be redirected to the current page 
+                //After the login page, we'll be redirected to the current page
                location.reload();
             });
         } else { //Oups
             bootbox.alert("<?php echo lang('global_ajax_error');?>");
         }
       });
+
+    //Handle links clicked into the context menu popup
+    function handleLinksInContextMenu(e) {
+        id = $(e.target).closest("tr").find('td:eq(0)').text();
+        $("#frmContextMenu").modal('show');
+        $('.context').each(function() {
+            action =  $(this).attr( 'href');
+            var url = action.replace("{id}", id.trim());
+            $(this).attr( 'href', url);
+        }); 
+    }
     
-    //Handle a context menu of the DataTable
-    $('.context').contextmenu({
-        before: function (e, element, target) {
-            e.preventDefault();
-            if (oTable.data().any()) {
-                contextObject = e.target;
-                return true;
-            } else {
-                return false;
-            }
-        },
-        onItem: function(context,e) {
-            var action = null;
-            if (e != "a") {
-                action = $(e.target).closest("a").data("action");
-            } else {
-                action = $(e.target).data("action");
-            }
-            var id = $(contextObject).closest("tr").find('td:eq(0)').text();
-            var url = action.replace("{id}", id.trim());
-            window.location = url;
-        }
-      });
-        
-    //Taphold on mobile, display contextual menu as a popup
-    $(document).on('taphold', '.context', function(e){
-        id = $(e.target).closest("tr").find('td:eq(0)').text();
-        $("#frmContextMenu").modal('show');
-        $('.context-mobile').each(function() {
-            action =  $(this).attr( 'href');
-            var url = action.replace("{id}", id.trim());
-            $(this).attr( 'href', url);
-        });
-      });
-      
-    //On double click, display contextual menu as a popup
-    $(document).on('dblclick', '.context', function (e) {
-        clearSelection();
-        id = $(e.target).closest("tr").find('td:eq(0)').text();
-        $("#frmContextMenu").modal('show');
-        $('.context-mobile').each(function() {
-            action =  $(this).attr( 'href');
-            var url = action.replace("{id}", id.trim());
-            $(this).attr( 'href', url);
-        });
+    //Long press on mobile, display contextual menu as a popup
+    $(document).on('contextmenu', '.employees-area', function (e) {
+        e.preventDefault();
+        handleLinksInContextMenu(e);
     });
-    
+
+    //Long press on mobile, display contextual menu as a popup
+    var hammer = new Hammer(document, {time: 600});
+    hammer.on('press', function(e) {
+        handleLinksInContextMenu(e);
+    });
+
+    //On double click, display contextual menu as a popup
+    $(document).on('dblclick', '.employees-area', function (e) {
+        //Prevent text selection after double click
+        if(document.selection && document.selection.empty) {
+            document.selection.empty();
+        } else if(window.getSelection) {
+            var sel = window.getSelection();
+            sel.removeAllRanges();
+        }
+        //Handle links
+        handleLinksInContextMenu(e);
+    });
+
     //On keying ESC, hide context menu
     $("body").on("keyup", function(e){
         if (e.keyCode == 27) {
@@ -604,14 +562,14 @@ $(function () {
             }
         }
     });
-    
+
     //Cookie has value ? take -1 by default
-    if($.cookie('entity') != null) {
-        entity = $.cookie('entity');
-        entityName = $.cookie('entityName');
-        includeChildren = $.cookie('includeChildren');
-        if ($.cookie('filterActive') != null) {
-            filterActive = $.cookie('filterActive');
+    if(Cookies.get('entity') !== undefined) {
+        entity = Cookies.get('entity');
+        entityName = Cookies.get('entityName');
+        includeChildren = Cookies.get('includeChildren');
+        if (Cookies.get('filterActive') !== undefined) {
+            filterActive = Cookies.get('filterActive');
         }
         //Parse boolean value contained into the string
         includeChildren = $.parseJSON(includeChildren.toLowerCase());
@@ -623,11 +581,11 @@ $(function () {
             case "all": $("#cmdAll").addClass("active"); break;
         }
     } else { //Set default value
-        $.cookie('entity', entity);
-        $.cookie('entityName', entityName);
-        $.cookie('includeChildren', includeChildren);
-        $.cookie('filterActive', filterActive);
-    }    
+        Cookies.set('entity', entity);
+        Cookies.set('entityName', entityName);
+        Cookies.set('includeChildren', includeChildren);
+        Cookies.set('filterActive', filterActive);
+    }
 
     //Transform the HTML table in a fancy datatable:
     // * Column ID cannot be moved or hidden because it is used for contextual actions
@@ -675,7 +633,7 @@ $(function () {
                     '<?php echo lang('datatable_10_rows');?>',
                     '<?php echo lang('datatable_25_rows');?>',
                     '<?php echo lang('datatable_50_rows');?>',
-                    '<?php echo lang('datatable_all_rows');?>' 
+                    '<?php echo lang('datatable_all_rows');?>'
                 ]
             ],
             colReorder: {
@@ -708,14 +666,14 @@ $(function () {
             }
         },
     });
-    
+
     //Popup select entity
     $("#cmdSelectEntity").click(function() {
         contextSelectEntity = "select";
         $("#frmSelectEntity").modal('show');
         $("#frmSelectEntityBody").load('<?php echo base_url(); ?>organization/select');
     });
-    
+
     //Force decimal separator whatever the locale is
     $( "#days" ).keyup(function() {
         var value = $("#days").val();
@@ -745,7 +703,7 @@ $(function () {
                 $( "#viz_startentdate" ).datepicker( "option", "maxDate", selectedDate );
               }
     }, $.datepicker.regional['<?php echo $language_code;?>']);
-    
+
     //Change the manager of a group of employees
     $("#cmdSelectManager").click(function() {
         if (oTable.rows({selected: true}).any()) {
@@ -756,7 +714,7 @@ $(function () {
             bootbox.alert("<?php echo lang('hr_employees_multiple_edit_selection_msg');?>");
         }
     });
-    
+
     //Add entitled days to a group of employees
     $("#cmdAddEntitlments").click(function() {
         if (oTable.rows({selected: true}).any()) {
@@ -766,7 +724,7 @@ $(function () {
             bootbox.alert("<?php echo lang('hr_employees_multiple_edit_selection_msg');?>");
         }
     });
-    
+
     //Change the contract of a group of employees
     $("#cmdSelectContract").click(function() {
         if (oTable.rows({selected: true}).any()) {
@@ -776,7 +734,7 @@ $(function () {
             bootbox.alert("<?php echo lang('hr_employees_multiple_edit_selection_msg');?>");
         }
     });
-    
+
     //Move the entity of a group of employees
     $("#cmdChangeEntity").click(function() {
         if (oTable.rows({selected: true}).any()) {
@@ -788,7 +746,7 @@ $(function () {
             bootbox.alert("<?php echo lang('hr_employees_multiple_edit_selection_msg');?>");
         }
     });
-    
+
     //Create a leave request for a group of employees
     $("#cmdCreateRequest").click(function() {
         if (oTable.rows({selected: true}).any()) {
@@ -821,7 +779,7 @@ $(function () {
             bootbox.alert("<?php echo lang('hr_employees_multiple_edit_selection_msg');?>");
         }
     });
-    
+
     //Select or deselect all rows
     $("#cmdSelectAll").click(function() {
         oTable.rows({filter: 'applied'}).select();
@@ -829,25 +787,25 @@ $(function () {
     $("#cmdDeselectAll").click(function() {
         oTable.rows().deselect();
     });
-    
+
     //If we opt-in the include children box, we'll recursively include the children of the selected entity
     //and the attached employees
     $("#chkIncludeChildren").on('change', function() {
         $('#frmModalAjaxWait').modal('show');
         includeChildren = $('#chkIncludeChildren').is(':checked');
-        $.cookie('includeChildren', includeChildren);
+        Cookies.set('includeChildren', includeChildren);
         //Refresh datatable
         oTable.ajax.url('<?php echo base_url();?>hr/employees/entity/' + entity + '/' + includeChildren + '/' + filterActive + '/' + filterDate)
             .load(function() {
                 $("#frmModalAjaxWait").modal('hide');
             }, true);
     });
-    
+
     //Manage radio buttons for the filtre active/inactive
     $("#cmdAll").click(function() {
         $('#frmModalAjaxWait').modal('show');
         filterActive = "all";
-        $.cookie('filterActive', filterActive);
+        Cookies.set('filterActive', filterActive);
         oTable.ajax.url('<?php echo base_url();?>hr/employees/entity/' + entity + '/' + includeChildren + '/' + filterActive + '/' + filterDate)
             .load(function() {
                 $("#frmModalAjaxWait").modal('hide');
@@ -856,22 +814,22 @@ $(function () {
     $("#cmdActive").click(function() {
         $('#frmModalAjaxWait').modal('show');
         filterActive = "active";
-        $.cookie('filterActive', filterActive);
+        Cookies.set('filterActive', filterActive);
         oTable.ajax.url('<?php echo base_url();?>hr/employees/entity/' + entity + '/' + includeChildren + '/' + filterActive + '/' + filterDate)
             .load(function() {
                 $("#frmModalAjaxWait").modal('hide');
-            }, true); 
+            }, true);
     });
     $("#cmdInactive").click(function() {
         $('#frmModalAjaxWait').modal('show');
         filterActive = "inactive";
-        $.cookie('filterActive', filterActive);
+        Cookies.set('filterActive', filterActive);
         oTable.ajax.url('<?php echo base_url();?>hr/employees/entity/' + entity + '/' + includeChildren + '/' + filterActive + '/' + filterDate)
             .load(function() {
                 $("#frmModalAjaxWait").modal('hide');
-            }, true); 
+            }, true);
     });
-    
+
     //On click button export, call the export to Excel view
     $("#cmdExportEmployees").click(function() {
         window.location = '<?php echo base_url();?>hr/employees/export/' + entity + '/' + includeChildren + '/' + filterActive + '/' + filterDate;
@@ -898,7 +856,7 @@ $(function () {
             refreshDataTable();
         }
     }, $.datepicker.regional['<?php echo $language_code;?>']);
-    
+
     //Handle filters on date hired field
     $("#cmdLesser1").click(function() {
         state1="lesser";

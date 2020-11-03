@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.1.0
@@ -31,12 +31,12 @@ $lang['entitleddays_contract_index_button_back'] = 'Torna all\'elenco dei contra
 $lang['entitleddays_contract_confirm_delete_message'] = 'Sei sicuro di volerlo eliminare?';
 $lang['entitleddays_contract_confirm_delete_yes'] = 'Si';
 $lang['entitleddays_contract_confirm_delete_cancel'] = 'Annulla';
-$lang['entitleddays_contract_index_field_step'] = 'Step';
+$lang['entitleddays_contract_index_field_step'] = 'Passo';
 
 $lang['entitleddays_user_index_title'] = 'Giorni spettanti per dipendente';
 $lang['entitleddays_user_index_thead_tip_delete'] = 'Elimina';
-$lang['entitleddays_user_index_thead_tip_copy'] = 'Copy';
-$lang['entitleddays_contract_index_thead_tip_edit'] = 'Modifica';
+$lang['entitleddays_user_index_thead_tip_copy'] = 'Copia';
+$lang['entitleddays_user_index_thead_tip_edit'] = 'Modifica';
 $lang['entitleddays_user_index_thead_start'] = 'Inizio';
 $lang['entitleddays_user_index_thead_end'] = 'Fine';
 $lang['entitleddays_user_index_thead_days'] = 'Giorni';
@@ -55,7 +55,7 @@ $lang['entitleddays_user_index_button_back'] = 'Torna all\'elenco dei dipendenti
 $lang['entitleddays_user_confirm_delete_message'] = 'Sei sicuro di volerlo eliminare?';
 $lang['entitleddays_user_confirm_delete_yes'] = 'Si';
 $lang['entitleddays_user_confirm_delete_cancel'] = 'Annulla';
-$lang['entitleddays_user_index_field_step'] = 'Step';
+$lang['entitleddays_user_index_field_step'] = 'Passo';
 
 $lang['entitleddays_counters_title_contract'] = 'Giorni spettanti per il Contratto #';
 $lang['entitleddays_counters_description_contract'] = 'Il tuo periodo di ferie: ';

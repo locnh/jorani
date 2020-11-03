@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license     http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link          https://github.com/bbalet/jorani
  * @since        0.4.4
@@ -72,6 +72,7 @@ $lang['hr_leaves_thead_tip_edit'] = 'редагувати';
 $lang['hr_leaves_thead_tip_accept'] = 'затвердити';
 $lang['hr_leaves_thead_tip_reject'] = 'відхилити';
 $lang['hr_leaves_thead_tip_delete'] = 'видалити';
+$lang['hr_leaves_thead_tip_history'] = 'show history';
 $lang['hr_leaves_thead_id'] = 'ID';
 $lang['hr_leaves_thead_status'] = 'Статус';
 $lang['hr_leaves_thead_start'] = 'Дата початку';
@@ -85,6 +86,7 @@ $lang['hr_leaves_popup_delete_message'] = 'Ви збираєтесь видал�
 $lang['hr_leaves_popup_delete_question'] = 'Продовжити?';
 $lang['hr_leaves_popup_delete_button_yes'] = 'Так';
 $lang['hr_leaves_popup_delete_button_no'] = 'Ні';
+$lang['hr_leaves_deleted_title'] = 'List of deleted leave requests';
 
 $lang['hr_export_leaves_title'] = 'Список запитаних заяв на відпустку';
 $lang['hr_export_leaves_thead_id'] = 'ID';

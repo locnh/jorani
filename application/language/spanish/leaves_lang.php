@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.4.0
@@ -16,6 +16,8 @@ $lang['leaves_summary_thead_available'] = 'Disponible';
 $lang['leaves_summary_thead_taken'] = 'Recibido';
 $lang['leaves_summary_thead_entitled'] = 'Asociado';
 $lang['leaves_summary_thead_description'] = 'Descripción';
+$lang['leaves_summary_thead_actual'] = 'actual';
+$lang['leaves_summary_thead_simulated'] = 'simulated';
 $lang['leaves_summary_tbody_empty'] = 'No hay día asociado o recibido para este período. Por favor, póngase en contacto con el administrador.';
 $lang['leaves_summary_flash_msg_error'] = 'Parece que no tiene contrato. Pongase en contacto con el administrador.';
 $lang['leaves_summary_date_field'] = 'Fecha del informe';
@@ -33,6 +35,8 @@ $lang['leaves_index_thead_cause'] = 'Motivo';
 $lang['leaves_index_thead_duration'] = 'Duración';
 $lang['leaves_index_thead_type'] = 'Tipo';
 $lang['leaves_index_thead_status'] = 'Estado';
+$lang['leaves_index_thead_requested_date'] = 'Requested';
+$lang['leaves_index_thead_last_change'] = 'Last change';
 $lang['leaves_index_button_export'] = 'Exporta a listado';
 $lang['leaves_index_button_create'] = 'Nueva solicitud';
 $lang['leaves_index_popup_delete_title'] = 'Borrar solicitud de permisos';
@@ -68,6 +72,13 @@ $lang['leaves_create_flash_msg_error'] = 'La solicitud del permiso se ha creado 
 
 $lang['leaves_flash_spn_list_days_off'] = '%s non-working days in the period';
 $lang['leaves_flash_msg_overlap_dayoff'] = 'Your leave request matches with a non-working day.';
+
+$lang['leaves_cancellation_flash_msg_error'] = 'You can\'t cancel this leave request';
+$lang['leaves_cancellation_flash_msg_success'] = 'The cancellation request has been successfully sent';
+$lang['requests_cancellation_accept_flash_msg_success'] = 'The leave request has been successfully cancelled';
+$lang['requests_cancellation_accept_flash_msg_error'] = 'An error occured while trying to accept the cancellation';
+$lang['requests_cancellation_reject_flash_msg_success'] = 'The leave request has now its original status of Accepted';
+$lang['requests_cancellation_reject_flash_msg_error'] = 'An error occured while trying to reject the cancellation';
 
 $lang['leaves_edit_html_title'] = 'Editar una solicitud de permiso';
 $lang['leaves_edit_title'] = 'Editar solicitudes de permiso #';
@@ -115,3 +126,12 @@ $lang['leaves_export_thead_cause'] = 'Motivo';
 $lang['leaves_export_thead_duration'] = 'Duración';
 $lang['leaves_export_thead_type'] = 'Tipo';
 $lang['leaves_export_thead_status'] = 'Estado';
+
+$lang['leaves_button_send_reminder'] = 'Send a reminder';
+$lang['leaves_reminder_flash_msg_success'] = 'The reminder email was sent to the manager';
+
+$lang['leaves_comment_title'] = 'Comments';
+$lang['leaves_comment_new_comment'] = 'New comment';
+$lang['leaves_comment_send_comment'] = 'Send comment';
+$lang['leaves_comment_author_saying'] = ' says';
+$lang['leaves_comment_status_changed'] = 'The status of the leave have been changed to ';

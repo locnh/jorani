@@ -1,57 +1,55 @@
 <?php
 /**
  * This view displays the leave requests for a given entity of the organization.
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
- * @since         0.1.0
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
+ * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
+ * @link       https://github.com/bbalet/jorani
+ * @since      0.1.0
  */
 ?>
-
-<div class="row-fluid">
-    <div class="span12">
 
 <h2><?php echo lang('calendar_organization_title');?><?php echo $help;?></h2>
 
 <div class="row-fluid">
-    <div class="span4">
-        <label for="txtEntity"><?php echo lang('calendar_organization_field_select_entity');?></label>
-        <div class="input-append">
-        <input type="text" id="txtEntity" name="txtEntity" readonly />
-        <button id="cmdSelectEntity" class="btn btn-primary"><?php echo lang('calendar_organization_button_select_entity');?></button>
+    <div class="span5">
+        <label for="chkIncludeChildren">
+            <?php echo lang('calendar_organization_field_select_entity');?>&nbsp;
+            (<input type="checkbox" class="input-centered" checked id="chkIncludeChildren" name="chkIncludeChildren"> <?php echo lang('calendar_organization_check_include_subdept');?>)
+        </label>
+        <div class="input-prepend input-append">
+            <span class="add-on" id="spnAddOn"><i class="mdi mdi-sitemap"></i></span>
+            <input type="text" id="txtEntity" value="<?php echo $departmentName;?>" readonly />
+            <button id="cmdSelectEntity" class="btn btn-primary" title="<?php echo lang('calendar_organization_button_select_entity');?>"><i class="mdi mdi-sitemap" aria-hidden="true"></i></button>
+            <?php if ($mode == 'connected') { ?>
+           <button id="cmdSelectList" class="btn btn-primary" title="<?php echo lang('calendar_tabular_button_select_list');?>"><i class="mdi mdi-account-multiple" aria-hidden="true"></i></button>
+            <?php } ?>
         </div>
     </div>
-    <div class="span3">
-        <label for="chkIncludeChildren">
-            <input type="checkbox" value="" id="chkIncludeChildren" name="chkIncludeChildren"> <?php echo lang('calendar_organization_check_include_subdept');?>
+    <div class="span5">
+        <label for="chkIncludeDaysOffs">
+            <input type="checkbox" class="input-centered" checked id="chkIncludeDaysOffs" name="chkIncludeDaysOffs"> <?php echo lang('calendar_individual_day_offs');?>
         </label>
+        <div class="input-prepend input-append">
+            <button id="cmdPrevious" class="btn btn-primary" title="<?php echo lang('calendar_tabular_button_previous');?>"><i class="mdi mdi-chevron-left"></i></button>
+            <input type="text" id="txtMonthYear" style="cursor:pointer;" value="<?php echo $monthName . ' ' . $year;?>" class="input-medium" readonly />
+            <button id="cmdNext" class="btn btn-primary" title="<?php echo lang('calendar_tabular_button_next');?>"><i class="mdi mdi-chevron-right"></i></button>
+        </div>
     </div>
     <?php if (($this->config->item('ics_enabled') == TRUE) && ($logged_in == TRUE)) {?>
-    <div class="span5 pull-right"><a id="lnkICS" href="#"><i class="icon-globe"></i> ICS</a></div>
+    <div class="span2 pull-right"><a id="lnkICS" href="#"><i class="mdi mdi-earth nolink"></i> ICS</a></div>
     <?php } else {?>
-    <div class="span5">&nbsp;</div>
+    <div class="span2">&nbsp;</div>
     <?php }?>
-    
+
 </div>
 
 <div class="row-fluid">
-    <div class="span6">
-        <button id="cmdPrevious" class="btn btn-primary"><i class="icon-chevron-left icon-white"></i></button>
-        <button id="cmdToday" class="btn btn-primary"><?php echo lang('today');?></button>
-        <button id="cmdNext" class="btn btn-primary"><i class="icon-chevron-right icon-white"></i></button>
+    <div class="span12">
+        <span class="label"><input type="checkbox" checked id="chkPlanned" class="filterStatus"> &nbsp;<?php echo lang('Planned');?></span> &nbsp;
+        <span class="label label-success"><input type="checkbox" checked id="chkAccepted" class="filterStatus"> &nbsp;<?php echo lang('Accepted');?></span> &nbsp;
+        <span class="label label-warning"><input type="checkbox" checked id="chkRequested" class="filterStatus"> &nbsp;<?php echo lang('Requested');?></span> &nbsp;
+        <span class="label label-important" style="background-color: #ff0000;"><input type="checkbox" checked id="chkCancellation" class="filterStatus"> &nbsp;<?php echo lang('Cancellation');?></span> &nbsp;
     </div>
-    <div class="span6">
-        <div class="pull-right">
-            <button id="cmdDisplayDayOff" class="btn btn-primary"><i class="icon-calendar icon-white"></i>&nbsp;<?php echo lang('calendar_individual_day_offs');?></button>
-        </div>
-    </div>
-</div>
-
-<div class="row-fluid">
-    <div class="span3"><span class="label"><?php echo lang('Planned');?></span></div>
-    <div class="span3"><span class="label label-success"><?php echo lang('Accepted');?></span></div>
-    <div class="span3"><span class="label label-warning"><?php echo lang('Requested');?></span></div>
-    <div class="span3">&nbsp;</div>
 </div>
 
 <div id="frmSelectEntity" class="modal hide fade">
@@ -63,15 +61,26 @@
         <img src="<?php echo base_url();?>assets/images/loading.gif">
     </div>
     <div class="modal-footer">
-        <a href="#" onclick="select_entity();" class="btn"><?php echo lang('calendar_organization_popup_entity_button_ok');?></a>
+        <a href="#" onclick="select_entity();" class="btn btn-primary"><?php echo lang('calendar_organization_popup_entity_button_ok');?></a>
         <a href="#" onclick="$('#frmSelectEntity').modal('hide');" class="btn"><?php echo lang('calendar_organization_popup_entity_button_cancel');?></a>
     </div>
 </div>
 
-<div id='calendar'></div>
-
+<div id="frmSelectList" class="modal hide fade">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3><?php echo lang('calendar_tabular_button_select_list');?></h3>
+    </div>
+    <div class="modal-body" id="frmSelectListBody">
+        <img src="<?php echo base_url();?>assets/images/loading.gif">
+    </div>
+    <div class="modal-footer">
+        <button onclick="select_list();" data-dismiss="modal" class="btn"><?php echo lang('OK');?></button>
+        <button data-dismiss="modal" aria-hidden="true" class="btn"><?php echo lang('Cancel');?></button>
     </div>
 </div>
+
+<div id='calendar'></div>
 
 <div class="modal hide" id="frmModalAjaxWait" data-backdrop="static" data-keyboard="false">
         <div class="modal-header">
@@ -88,10 +97,10 @@
     </div>
     <div class="modal-body" id="frmSelectDelegateBody">
         <div class='input-append'>
-                <input type="text" class="input-xlarge" id="txtIcsUrl" onfocus="this.select();" onmouseup="return false;" 
+                <input type="text" class="input-xlarge" id="txtIcsUrl" onfocus="this.select();" onmouseup="return false;"
                     value="" />
                  <button id="cmdCopy" class="btn" data-clipboard-target="#txtIcsUrl">
-                     <i class="fa fa-clipboard"></i>
+                     <i class="mdi mdi-content-copy"></i>
                  </button>
                 <a href="#" id="tipCopied" data-toggle="tooltip" title="copied" data-placement="right" data-container="#cmdCopy"></a>
         </div>
@@ -101,75 +110,141 @@
     </div>
 </div>
 
+<style>
+#frmSelectList
+{
+    width: 700px;
+    margin-left:  -350px !important;
+}
+</style>
+
+<link rel="stylesheet" href="<?php echo base_url();?>assets/bootstrap-datepicker-1.8.0/css/bootstrap-datepicker.min.css">
+<script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.8.0/js/bootstrap-datepicker.min.js"></script>
 <link href="<?php echo base_url();?>assets/fullcalendar-2.8.0/fullcalendar.css" rel="stylesheet">
-<script type="text/javascript" src="<?php echo base_url();?>assets/fullcalendar-2.8.0/lib/moment.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/fullcalendar-2.8.0/fullcalendar.min.js"></script>
 <?php if ($language_code != 'en') {?>
-<script type="text/javascript" src="<?php echo base_url();?>assets/fullcalendar-2.8.0/lang/<?php echo $language_code;?>.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/fullcalendar-2.8.0/lang/<?php echo strtolower($language_code);?>.js"></script>
+<script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.8.0/locales/bootstrap-datepicker.<?php echo $language_code;?>.min.js"></script>
 <?php }?>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.pers-brow.js"></script>
-<script src="<?php echo base_url();?>assets/js/clipboard-1.6.1.min.js"></script>
 <script src="<?php echo base_url();?>assets/js/bootbox.min.js"></script>
 <script type="text/javascript">
-    var entity = -1; //Id of the selected entity
-    var entityName = '';
+    var entity = 0; //Id of the selected entity
+    var entityName = '<?php echo $departmentName;?>';
     var includeChildren = true;
+    var selectedEntity = true;
+    var month = (<?php echo $month;?> - 1); //Momentjs uses a zero-based number
+    var year = <?php echo $year;?>;
     var text; //Label of the selected entity
-    var toggleDayoffs = false;
-    
+    var toggleDayoffs = true;
+    var currentDate = moment().year(year).month(month).date(1);
+    var listId
+
     //Refresh the calendar if data is available
     function refresh_calendar() {
+        //console.log(selectedEntity);
         $('#calendar').fullCalendar('removeEventSources');
-        //$('#calendar').fullCalendar('removeEvents');
-        if (entity != -1) {
-            <?php if ($logged_in == TRUE) {?>
+          <?php if ($logged_in == TRUE) {?>
+          if(selectedEntity == true){
             var source = '<?php echo base_url();?>leaves/organization/' + entity;
-            <?php } else {?>
-            var source = '<?php echo base_url();?>leaves/public/organization/' + entity;
-            <?php }?>
-            if ($('#chkIncludeChildren').prop('checked') == true) {
-                source += '?children=true';
-            } else {
-                source += '?children=false';
-            }
-            $('#calendar').fullCalendar('addEventSource', source);
-        }
-        <?php if ($logged_in == TRUE) {?>
-        source = '<?php echo base_url();?>contracts/calendar/alldayoffs?entity=' + entity;
-        <?php } else {?>
-        source = '<?php echo base_url();?>contracts/public/calendar/alldayoffs?entity=' + entity;
-        <?php }?>
-        if ($('#chkIncludeChildren').prop('checked') == true) {
-            source += '&children=true';
-        } else {
-            source += '&children=false';
-        }
-        if (toggleDayoffs) {
-            $('#calendar').fullCalendar('addEventSource', source);
-        } else {
-            $('#calendar').fullCalendar('removeEventSource', source);
-        }
-    }
-    
-    function select_entity() {
-        entity = $('#organization').jstree('get_selected')[0];
-        entityName = $('#organization').jstree().get_text(entity);
-        $('#txtEntity').val(entityName);
-        refresh_calendar();
-        $.cookie('cal_entity', entity);
-        $.cookie('cal_entityName', entityName);
-        $.cookie('cal_includeChildren', includeChildren);
-        $("#frmSelectEntity").modal('hide');
+          } else {
+            var source = '<?php echo base_url();?>leaves/list/' + listId;
+          }
+          <?php } else {?>
+          var source = '<?php echo base_url();?>leaves/public/organization/' + entity;
+          <?php }?>
+          if ($('#chkIncludeChildren').prop('checked') == true) {
+              source += '?children=true';
+          } else {
+              source += '?children=false';
+          }
+
+          //Filter on status
+          statuses = "";
+          if ($("#chkPlanned").prop("checked")) statuses+="1|";
+          if ($("#chkRequested").prop("checked")) statuses+="2|";
+          if ($("#chkAccepted").prop("checked")) statuses+="3|";
+          if ($("#chkCancellation").prop("checked")) statuses+="5|";
+          statuses = statuses.replace(/\|*$/, "");
+          if (statuses!="") source += '&statuses=' + statuses;
+
+          $('#calendar').fullCalendar('addEventSource', source);
+          <?php if ($logged_in == TRUE) {?>
+          if(selectedEntity == true){
+            source = '<?php echo base_url();?>contracts/calendar/alldayoffs?entity=' + entity;
+          } else{
+            source = '<?php echo base_url();?>contracts/calendar/alldayoffs/lists?entity=' + entity;
+          }
+          <?php } else {?>
+          source = '<?php echo base_url();?>contracts/public/calendar/alldayoffs?entity=' + entity;
+          <?php }?>
+          if ($('#chkIncludeChildren').prop('checked') == true) {
+              source += '&children=true';
+          } else {
+              source += '&children=false';
+          }
+          if (toggleDayoffs) {
+              $('#calendar').fullCalendar('addEventSource', source);
+          } else {
+              $('#calendar').fullCalendar('removeEventSource', source);
+          }
     }
 
+    function select_entity() {
+      selectedEntity = true;
+      entity = $('#organization').jstree('get_selected')[0];
+      entityName = $('#organization').jstree().get_text(entity);
+      $('#spnAddOn').html('<i class="mdi mdi-sitemap" aria-hidden="true"></i>');
+      $('#txtEntity').val(entityName);
+      refresh_calendar();
+      Cookies.set('selected', 'entity');
+      Cookies.set('cal_entity', entity);
+      Cookies.set('cal_entityName', entityName);
+      Cookies.set('cal_includeChildren', includeChildren);
+      $("#frmSelectEntity").modal('hide');
+    }
+
+    // After selection of a list from the modal dialog, refresh the partial
+    // view if the entity is diferent
+
+    function select_list() {
+      selectedEntity = false;
+      //$('#frmSelectList').modal('hide');
+      //Reload the partial view
+      listId = $('#cboList').val();
+      if (listId != -1 ) {
+        source = 'list';
+        $('#spnAddOn').html('<i class="mdi mdi-account-multiple" aria-hidden="true"></i>');
+        listName = $('#cboList option:selected').text();
+        $('#txtEntity').val(listName);
+        refresh_calendar();
+        Cookies.set('selected', 'list');
+        Cookies.set('listId', listId);
+      }
+
+      //entity = 0;
+      //entityName = "test";
+      //$('#txtEntity').val(entityName);
+      //refresh_calendar();
+      $("#frmSelectList").modal('hide');
+
+    }
+
+
     $(document).ready(function() {
-        
+
+      <?php if ($this->config->item('csrf_protection') == TRUE) {?>
+          $.ajaxSetup({
+              data: {
+                  <?php echo $this->security->get_csrf_token_name();?>: "<?php echo $this->security->get_csrf_hash();?>",
+              }
+          });
+      <?php }?>
         //Global Ajax error handling mainly used for session expiration
         $( document ).ajaxError(function(event, jqXHR, settings, errorThrown) {
             $('#frmModalAjaxWait').modal('hide');
             if (jqXHR.status == 401) {
                 bootbox.alert("<?php echo lang('global_ajax_timeout');?>", function() {
-                    //After the login page, we'll be redirected to the current page 
+                    //After the login page, we'll be redirected to the current page
                    location.reload();
                 });
             } else { //Oups
@@ -182,10 +257,15 @@
             $("#frmSelectEntity").modal('show');
             $("#frmSelectEntityBody").load('<?php echo base_url(); ?>organization/select');
         });
+        //Popup select list
+        $("#cmdSelectList").click(function() {
+            $("#frmSelectList").modal('show');
+            $("#frmSelectListBody").load('<?php echo base_url(); ?>organization/lists');
+        });
 
         //On click the check box "include sub-department", refresh the content if a department was selected
         $('#chkIncludeChildren').click(function() {
-            $.cookie('cal_includeChildren', $('#chkIncludeChildren').prop('checked'));
+            Cookies.set('cal_includeChildren', $('#chkIncludeChildren').prop('checked'));
             refresh_calendar();
         });
 
@@ -193,6 +273,12 @@
         $("#frmSelectEntity").alert();
         //Prevent to load always the same content (refreshed each time)
         $('#frmSelectEntity').on('hidden', function() {
+            $(this).removeData('modal');
+        });
+        //Load alert forms
+        $("#frmSelectList").alert();
+        //Prevent to load always the same content (refreshed each time)
+        $('#frmSelectList').on('hidden', function() {
             $(this).removeData('modal');
         });
 
@@ -209,7 +295,7 @@
                     $('#frmModalAjaxWait').modal('show');
                 } else {
                     $('#frmModalAjaxWait').modal('hide');
-                }    
+                }
             },
             eventRender: function(event, element, view) {
                 if(event.imageurl){
@@ -255,40 +341,78 @@
                 $('#calendar').fullCalendar( 'rerenderEvents' );
             }
         });
-        
+
         //Toggle day offs displays
-        $('#cmdDisplayDayOff').on('click', function() {
+        $('#chkIncludeDaysOffs').on('click', function() {
             toggleDayoffs = !toggleDayoffs;
-            $.cookie('cal_dayoffs', toggleDayoffs);
+            Cookies.set('cal_dayoffs', toggleDayoffs);
             refresh_calendar();
         });
-        
+
         $('#cmdNext').click(function() {
+            currentDate = currentDate.add(1, 'M');
+            month = currentDate.month();
+            year = currentDate.year();
+            var fullDate = currentDate.format("MMMM") + ' ' + year;
+            $("#txtMonthYear").val(fullDate);
             $('#calendar').fullCalendar('next');
         });
-        
+
         $('#cmdPrevious').click(function() {
+            currentDate = currentDate.add(-1, 'M');
+            month = currentDate.month();
+            year = currentDate.year();
+            var fullDate = currentDate.format("MMMM") + ' ' + year;
+            $("#txtMonthYear").val(fullDate);
             $('#calendar').fullCalendar('prev');
         });
-        
-    //On click on today, if the current month is the same than the displayed month, we refetch the events
-    $('#cmdToday').click(function() {
-        var displayedDate = new Date($('#calendar').fullCalendar('getDate'));
-        var currentDate = new Date();
-        if (displayedDate.getMonth() == currentDate.getMonth()) {
-            $('#calendar').fullCalendar('refetchEvents');
-        } else {
-            $('#calendar').fullCalendar('today');
-        }
-    });
-        
+
+        //Intialize Month/Year selection
+        $("#txtMonthYear").datepicker({
+            format: "MM yyyy",
+            startView: 1,
+            minViewMode: 1,
+            todayBtn: 'linked',
+            todayHighlight: true,
+            language: "<?php echo $language_code;?>",
+            autoclose: true
+        }).on("changeDate", function(e) {
+            month = new Date(e.date).getMonth();
+            //Doesn't work : year = new Date(e.date).getYear();
+            year = parseInt(String(e.date).split(" ")[3]);
+            currentDate = moment().year(year).month(month).date(1);
+            var fullDate = currentDate.format("MMMM") + ' ' + year;
+            $("#txtMonthYear").val(fullDate);
+            $('#calendar').fullCalendar('gotoDate', currentDate);
+        });
+
         //Cookie has value ? take -1 by default
-        if($.cookie('cal_entity') != null) {
-            entity = $.cookie('cal_entity');
-            entityName = $.cookie('cal_entityName');
-            includeChildren = $.cookie('cal_includeChildren');
-            toggleDayoffs = $.cookie('cal_dayoffs');
+        if(Cookies.get('cal_entity') !== undefined) {
+            entity = Cookies.get('cal_entity');
+            entityName = Cookies.get('cal_entityName');
+            includeChildren = Cookies.get('cal_includeChildren');
+            toggleDayoffs = Cookies.get('cal_dayoffs');
+            selectedEntity = Cookies.get('selected') !== undefined && Cookies.get('selected') == "list" ? false : true;
+            listId = Cookies.set('listId');
+
+            if(selectedEntity == false){
+              $('#spnAddOn').html('<i class="mdi mdi-account-multiple" aria-hidden="true"></i>');
+              //listName = $('#cboList option:selected').text();
+              //console.log(listId);
+              $.ajax({
+                url: "<?php echo base_url();?>organization/lists/name",
+                type: "POST",
+                data: {
+                  id : listId
+                }
+              }).done(function(message) {
+                //console.log(message.name);
+                $('#txtEntity').val(message.name);
+              });
+            }
+
             //Parse boolean values
+            //console.log(toggleDayoffs);
             includeChildren = $.parseJSON(includeChildren.toLowerCase());
             toggleDayoffs = $.parseJSON(toggleDayoffs.toLowerCase());
             $('#txtEntity').val(entityName);
@@ -296,12 +420,18 @@
             //Load the calendar events
             refresh_calendar();
         } else { //Set default value
-            $.cookie('cal_entity', entity);
-            $.cookie('cal_entityName', entityName);
-            $.cookie('cal_includeChildren', includeChildren);
-            $.cookie('cal_dayoffs', toggleDayoffs);
+            Cookies.set('cal_entity', entity);
+            Cookies.set('cal_entityName', entityName);
+            Cookies.set('cal_includeChildren', includeChildren);
+            Cookies.set('cal_dayoffs', toggleDayoffs);
+            Cookies.set('selected', 'entity');
+            refresh_calendar();
         }
-        
+
+        $('.filterStatus').on('change',function(){
+            refresh_calendar();
+        });
+
         <?php if ($logged_in == TRUE) { ?>
         //Copy/Paste ICS Feed
         $('#lnkICS').click(function () {
@@ -309,11 +439,11 @@
             if (entity != -1) {
                 urlICS = '<?php echo base_url(); ?>ics/entity/<?php echo $user_id; ?>/' + entity + '/' + $('#chkIncludeChildren').prop('checked');
             }
+            urlICS += '?token=<?php echo $this->session->userdata('random_hash'); ?>'; 
             $("#frmLinkICS").modal('show');
             $('#txtIcsUrl').val(urlICS);
-            //$('#txtIcsUrl').data('data-clipboard-text', urlICS);
         });
-        var client = new Clipboard("#cmdCopy");
+        var client = new ClipboardJS("#cmdCopy");
         client.on( "success", function() {
             $('#tipCopied').tooltip('show');
             setTimeout(function() {$('#tipCopied').tooltip('hide')}, 1000);
@@ -321,4 +451,3 @@
         <?php } ?>;
     });
 </script>
-

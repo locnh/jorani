@@ -1,7 +1,7 @@
 <?php
 /**
  * Email template.You can change the content of this template
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.4.5
@@ -29,7 +29,7 @@
                 <td>Mật khẩu</td><td>{Password}</td>
             </tr>            
         </table>
-        Khi bạn đã kết nối, bạn có thể thay đổi mật khẩu của mình như được giải thích <a href="http://jorani.org/how-to-change-my-password.html" title="Link to documentation" target="_blank">tại đây</a>.
+        Khi bạn đã kết nối, bạn có thể thay đổi mật khẩu của mình như được giải thích <a href="https://jorani.org/how-to-change-my-password.html" title="Link to documentation" target="_blank">tại đây</a>.
         <hr>
         <h5>*** Đây là tin nhắn được tạo tự động, xin đừng trả lời tin nhắn này. ***</h5>
     </body>

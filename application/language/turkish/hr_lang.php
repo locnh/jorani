@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license     http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link          https://github.com/bbalet/jorani
  * @since       0.4.6
@@ -70,6 +70,7 @@ $lang['hr_leaves_thead_tip_edit'] = 'düzenle';
 $lang['hr_leaves_thead_tip_accept'] = 'kabul et';
 $lang['hr_leaves_thead_tip_reject'] = 'reddet';
 $lang['hr_leaves_thead_tip_delete'] = 'sil';
+$lang['hr_leaves_thead_tip_history'] = 'show history';
 $lang['hr_leaves_thead_id'] = 'ID';
 $lang['hr_leaves_thead_status'] = 'Durum';
 $lang['hr_leaves_thead_start'] = 'Başlangıç Tarihi';
@@ -83,6 +84,7 @@ $lang['hr_leaves_popup_delete_message'] = 'Bir izin talebini silmek üzeresiniz,
 $lang['hr_leaves_popup_delete_question'] = 'Devam etmek istiyor musunuz?';
 $lang['hr_leaves_popup_delete_button_yes'] = 'Evet';
 $lang['hr_leaves_popup_delete_button_no'] = 'Hayır';
+$lang['hr_leaves_deleted_title'] = 'List of deleted leave requests';
 
 $lang['hr_export_leaves_title'] = 'Talep edilmiş izinlerin listesi';
 $lang['hr_export_leaves_thead_id'] = 'ID';

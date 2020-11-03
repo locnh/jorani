@@ -1,7 +1,7 @@
 <?php
 /**
  * Email template.You can change the content of this template
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.1.0
@@ -34,7 +34,7 @@
             </tr>            
         </table>
         <?php if ($this->config->item('ldap_enabled') == FALSE) { ?>
-        Once connected, you can change your password, as explained <a href="http://jorani.org/how-to-change-my-password.html" title="Link to documentation" target="_blank">here</a>.
+        Once connected, you can change your password, as explained <a href="https://jorani.org/how-to-change-my-password.html" title="Link to documentation" target="_blank">here</a>.
         <?php } ?>
         <hr>
         <h5>*** This is an automatically generated message, please do not reply to this message ***</h5>

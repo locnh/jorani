@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link       https://github.com/bbalet/jorani
  * @since      0.4.4
@@ -13,6 +13,7 @@ $lang['requests_index_description'] = 'បញ្ជីកញ្ចក់នេ�
 $lang['requests_index_thead_tip_view'] = 'បង្ហាញ';
 $lang['requests_index_thead_tip_accept'] = 'ទទួលយកបាន';
 $lang['requests_index_thead_tip_reject'] = 'បដិសេធចោល';
+$lang['requests_index_thead_tip_history'] = 'show history';
 $lang['requests_index_thead_id'] = 'លេខអត្តសញ្ញាណ';
 $lang['requests_index_thead_fullname'] = 'ឈ្មោះពេញ';
 $lang['requests_index_thead_startdate'] = 'កាលបរិច្ឆេទដែលចាប់ផ្តើម';
@@ -20,6 +21,10 @@ $lang['requests_index_thead_enddate'] = 'កាលបរិច្ឆេទដែ
 $lang['requests_index_thead_duration'] = 'រយៈពេល';
 $lang['requests_index_thead_type'] = 'ប្រភេទ';
 $lang['requests_index_thead_status'] = 'ស្ថានភាព';
+$lang['leaves_index_thead_requested_date'] = 'Requested';
+$lang['leaves_index_thead_last_change'] = 'Last change';
+$lang['requests_index_thead_requested_date'] = 'Requested';
+$lang['requests_index_thead_last_change'] = 'Last change';
 
 $lang['requests_collaborators_title'] = 'បញ្ជីអ្នករួបការងាររបស់ខ្ញុំ';
 $lang['requests_collaborators_description'] = 'ផ្ទាំងអេក្រង់នេះ បង្ហាញពីអ្នករួមការងាររបស់អ្នក។ ប្រសិនបើលោកអ្នកមិនមែនជាអ្នកគ្រប់គ្រងទេ, បញ្ជីនេះតែងតែទទេជានិច្ច។';
@@ -79,3 +84,7 @@ $lang['requests_delegations_confirm_delete_yes'] = 'យល់ព្រម';
 $lang['requests_balance_title'] = 'Leave balance (subordinates)';
 $lang['requests_balance_description'] = 'Leave balance of my direct report subordinates. If you are not a manager, this list will always be empty.';
 $lang['requests_balance_date_field'] = 'Date of report';
+
+$lang['requests_comment_reject_request_title'] = 'Comment';
+$lang['requests_comment_reject_request_button_cancel'] = 'Cancel';
+$lang['requests_comment_reject_request_button_reject'] = 'Reject';

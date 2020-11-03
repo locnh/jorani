@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.4.2
@@ -18,10 +18,14 @@ $lang['email_leave_request_creation_subject'] = 'Заявление на отп�
 $lang['email_leave_request_creation_title'] = 'Заявление на отпуск';
 $lang['email_leave_request_cancellation_subject'] = 'Leave Request Cancellation from';
 $lang['email_leave_request_cancellation_title'] = 'Leave Request Cancellation';
+$lang['email_leave_cancel_accept_subject'] = 'Your Cancellation Request has been accepted';
+$lang['email_leave_cancel_reject_subject'] = 'Your Cancellation Request has been rejected';
 
 $lang['email_leave_request_accept_subject'] = 'Заявление на отпуск утверждено';
 $lang['email_leave_request_reject_subject'] = 'Заявление на отпуск отклонено';
 $lang['email_leave_request_validation_title'] = 'Заявление на отпуск';
+
+$lang['email_leave_request_reminder'] = '[напоминание]';
 
 $lang['email_overtime_request_accept_subject'] = 'Ваш запрос о сверхурочных утвержден';
 $lang['email_overtime_request_reject_subject'] = 'Ваш запрос о сверхурочных отклонен';

@@ -1,7 +1,7 @@
 <?php
 /**
  * Email template.You can change the content of this template
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.1.0
@@ -41,7 +41,11 @@
                 <td>Причина &nbsp;</td><td>{Reason}</td>
             </tr>
             <tr>
-                <td><a href="{BaseUrl}requests/accept/{LeaveId}">Accept</a> &nbsp;</td><td><a href="{BaseUrl}requests/reject/{LeaveId}">Reject</a></td>
+              <td>Last Comment &nbsp;</td><td>{Comments}</td>
+            </tr>
+            <tr>
+                <td><a href="{BaseUrl}requests/accept/{LeaveId}">Accept</a> &nbsp;</td>
+                <td><a href="{BaseUrl}requests?rejected={LeaveId}">Reject</a></td>
             </tr>
         </table>
         <br />

@@ -1,44 +1,45 @@
 <?php
 /**
  * This diagnostic page helps you to check OAuth2.
- * @copyright  Copyright (c) 2014-2016 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.5.0
  */
 
 define('BASEPATH','.');//Make this script works with nginx
+$env = is_null(getenv('CI_ENV'))?'':getenv('CI_ENV');
 
 ?>
 <html>
     <head>
         <title>Jorani OAuth2 Configuration</title>
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" type="image/x-icon" href="favicon.ico" sizes="32x32">
-        <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <script type="text/javascript" src="assets/js/jquery-2.2.0.min.js"></script>
+        <link rel="stylesheet" href="assets/dist/requirements.css">
+        <script type="text/javascript" src="assets/dist/requirements.js"></script>
     </head>
     <body>
-        <div class="container-fluid">
+        <div class="container">
             <ul class="nav nav-pills">
-                <li><a href="home" title="login to Jorani"><i class="icon-home"></i></a></li>
-                <li><a href="requirements.php">Requirements</a></li>
-                <li><a href="testmail.php">Email</a></li>
-                <li><a href="testldap.php">LDAP</a></li>
-                <li><a href="testssl.php">SSL</a></li>
-                <li class="active"><a href="#">OAuth2</a></li>
-                <li><a href="opcache.php">Opcache</a></li>
-              </ul>
-        
+                <li class="nav-item"><a class="nav-link" href="home" title="login to Jorani"><i class="mdi mdi-home nolink"></i></a></li>
+                <li class="nav-item"><a class="nav-link" href="requirements.php">Requirements</a></li>
+                <li class="nav-item"><a class="nav-link" href="testmail.php">Email</a></li>
+                <li class="nav-item"><a class="nav-link" href="testldap.php">LDAP</a></li>
+                <li class="nav-item"><a class="nav-link" href="testssl.php">SSL</a></li>
+                <li class="nav-item"><a class="nav-link active" href="#">OAuth2</a></li>
+                <li class="nav-item"><a class="nav-link" href="testapi.php">API HTTP</a></li>
+            </ul>
+
         <h1>Setup of OAuth2 sign-in</h1>
 
         <p>The curl and openssl PHP extensions must be loaded if you want to use this feature.</p>
 
         <h2>Checkup of your environement</h2>
-            
+
             <table class="table table-bordered table-hover table-condensed">
-                <thead>
+                <thead class="thead-dark">
                     <tr>
                       <th>Requirement</th>
                       <th>Value / Description</th>
@@ -47,7 +48,7 @@ define('BASEPATH','.');//Make this script works with nginx
                   <tbody>
 <?php
 
-$pathConfigFile = realpath(join(DIRECTORY_SEPARATOR, array('application', 'config', 'config.php')));
+$pathConfigFile = realpath(join(DIRECTORY_SEPARATOR, array('application', 'config', $env, 'config.php')));
 include $pathConfigFile;
 
 echo "<tr><td>PHP_VERSION</td><td>" . (version_compare(PHP_VERSION, '5.6.0', '>=')? '>=5.6.0' : '<5.6.0')  . '</td></tr>';
@@ -70,7 +71,7 @@ if (function_exists('openssl_get_cert_locations')) {
 ?>
                   </tbody>
             </table>
-            
+
 
 <h2>Additional information</h2>
 

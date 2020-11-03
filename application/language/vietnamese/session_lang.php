@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license     http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link          https://github.com/bbalet/jorani
  * @since       0.4.5
@@ -21,3 +21,4 @@ $lang['session_login_msg_password_sent'] = 'Mật khẩu đã được gửi và
 $lang['session_login_flash_bad_credentials'] = 'Thông tin đăng nhập và mật khẩu không chính xác';
 $lang['session_login_flash_change_language'] = 'Đã chuyển ngôn ngữ';
 $lang['session_login_flash_account_disabled'] = 'Your account is disabled. Please contact your HR Officer / Manager.';
+$lang['session_login_no_slo'] = 'Bạn đã đăng xuất khỏi Jorani nhưng vẫn đăng nhập vào Nhà cung cấp danh tính của bạn. Nhấp vào Đăng nhập để tự động đăng nhập lại vào Jorani.';

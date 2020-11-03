@@ -16,6 +16,13 @@
 */
 $config['base_url']	= '';
 
+if (($config['base_url'] == '')) {
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+    $root = $protocol . $_SERVER['HTTP_HOST'];
+    $root .= dirname($_SERVER['SCRIPT_NAME']);
+    $config['base_url'] = $root;
+}
+
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -26,7 +33,7 @@ $config['base_url']	= '';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -107,6 +114,28 @@ $config['enable_hooks'] = FALSE;
 |
 */
 $config['subclass_prefix'] = 'MY_';
+
+/*
+|--------------------------------------------------------------------------
+| Composer auto-loading
+|--------------------------------------------------------------------------
+|
+| Enabling this setting will tell CodeIgniter to look for a Composer
+| package auto-loader script in application/vendor/autoload.php.
+|
+|	$config['composer_autoload'] = TRUE;
+|
+| Or if you have your vendor/ directory located somewhere else, you
+| can opt to set a specific path as well:
+|
+|	$config['composer_autoload'] = '/path/to/vendor/autoload.php';
+|
+| For more information about Composer, please visit https://getcomposer.org/
+|
+| Note: This will NOT disable or override the CodeIgniter-specific
+|	autoloading (application/config/autoload.php)
+*/
+$config['composer_autoload'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------
@@ -229,27 +258,60 @@ $config['encryption_key'] = 'YJ9FljXV4axG7QTzEzbRaUBFwi0FzIls';
 | Session Variables
 |--------------------------------------------------------------------------
 |
-| 'sess_cookie_name'		= the name you want for the cookie
-| 'sess_expiration'			= the number of SECONDS you want the session to last.
-|   by default sessions last 7200 seconds (two hours).  Set to zero for no expiration.
-| 'sess_expire_on_close'	= Whether to cause the session to expire automatically
-|   when the browser window is closed
-| 'sess_encrypt_cookie'		= Whether to encrypt the cookie
-| 'sess_use_database'		= Whether to save the session data to a database
-| 'sess_table_name'			= The name of the session database table
-| 'sess_match_ip'			= Whether to match the user's IP address when reading the session data
-| 'sess_match_useragent'	= Whether to match the User Agent when reading the session data
-| 'sess_time_to_update'		= how many seconds between CI refreshing Session Information
+| 'sess_driver'
+|
+|	The storage driver to use: files, database, redis, memcached
+|
+| 'sess_cookie_name'
+|
+|	The session cookie name, must contain only [0-9a-z_-] characters
+|
+| 'sess_expiration'
+|
+|	The number of SECONDS you want the session to last.
+|	Setting to 0 (zero) means expire when the browser is closed.
+|
+| 'sess_save_path'
+|
+|	The location to save sessions to, driver dependent.
+|
+|	For the 'files' driver, it's a path to a writable directory.
+|	WARNING: Only absolute paths are supported!
+|
+|	For the 'database' driver, it's a table name.
+|	Please read up the manual for the format with other session drivers.
+|
+|	IMPORTANT: You are REQUIRED to set a valid save path!
+|
+| 'sess_match_ip'
+|
+|	Whether to match the user's IP address when reading the session data.
+|
+|	WARNING: If you're using the database driver, don't forget to update
+|	         your session table's PRIMARY KEY when changing this setting.
+|
+| 'sess_time_to_update'
+|
+|	How many seconds between CI regenerating the session ID.
+|
+| 'sess_regenerate_destroy'
+|
+|	Whether to destroy session data associated with the old session ID
+|	when auto-regenerating the session ID. When set to FALSE, the data
+|	will be later deleted by the garbage collector.
+|
+| Other session cookie settings are shared with the rest of the application,
+| except for 'cookie_prefix' and 'cookie_httponly', which are ignored here.
 |
 */
 $config['sess_cookie_name']	= 'jorani_session';
+$config['sess_driver'] = 'database';
+$config['sess_save_path'] = 'ci_sessions';
+$config['sess_regenerate_destroy'] = FALSE;
 $config['sess_expiration']	= 7200;
-$config['sess_expire_on_close']	= FALSE;
-$config['sess_encrypt_cookie']	= TRUE;
 $config['sess_use_database']	= FALSE;
 $config['sess_table_name']	= 'ci_sessions';
 $config['sess_match_ip']	= FALSE;
-$config['sess_match_useragent']	= TRUE;
 $config['sess_time_to_update']	= 300;
 
 /*
@@ -291,7 +353,7 @@ $config['global_xss_filtering'] = FALSE;
 | 'csrf_cookie_name' = The cookie name
 | 'csrf_expire' = The number in seconds the token should expire.
 */
-if (isset($_SERVER["REQUEST_URI"])) 
+if (isset($_SERVER["REQUEST_URI"]))
 {
     if(stripos($_SERVER["REQUEST_URI"],'/api/') === FALSE)
     {
@@ -300,9 +362,9 @@ if (isset($_SERVER["REQUEST_URI"]))
     else
     {
         $config['csrf_protection'] = FALSE;
-    } 
-} 
-else 
+    }
+}
+else
 {
     $config['csrf_protection'] = TRUE;
 }
@@ -372,10 +434,10 @@ $config['proxy_ips'] = '';
 | Jorani application settings
 |--------------------------------------------------------------------------
 |
-| 
-| 
-| 
-| 
+|
+|
+|
+|
 |
 */
 
@@ -404,32 +466,24 @@ $config['default_leave_type'] = FALSE;      //Set this value with the default le
 //Create a leave request / Allow overwrite of the duration
 $config['disable_edit_leave_duration'] = FALSE;             //Switch to read-only (the duration of leave is computed)
 
-//Allow to cancel a leave request
-$config['cancel_leave_request'] = FALSE;             //Switch to allow the leave request cancellation by the requester
-//Allow to cancel a Accepted request
-$config['cancel_accepted_leave'] = FALSE;             //Switch to allow the accepted leave cancellation by the requester
-//For workflow and cheating reason, it's recommended to don't allow a user cancelling its own leave request without emailing its manager.
-$config['cancel_past_requests'] = TRUE;             //Switch to allow the leave request cancellation by the collaborator even if the leave start in the past
-$config['notify_cancelled_requests'] = TRUE;             //Switch to send email to the manager when a leave request is cancelled
-
 //____________________________________________________________________________
 //Set this value to TRUE if you want to create extras at status requested instead of planned
 $config['extra_status_requested'] = FALSE;
 
 //____________________________________________________________________________
-//Set this value to TRUE if you want to allow employees to edit or delete rejected leave requests, 2 use cases :
-// - Cancel an accepted leave request : the manager reject it, then the employee can delete it.
-// - Modify a leave request containing a mistake : the manager reject it, then the employee can edit it.
-$config['delete_rejected_requests'] = FALSE;
-$config['edit_rejected_requests'] = FALSE;
-
-//____________________________________________________________________________
 //Set this value to TRUE if you want to allow manager to create leave requests in behalf of their collaborators
-$config['requests_by_manager'] = FALSE;
+$config['requests_by_manager'] = TRUE;
+
+//Set this value to true if you want to force the manager to comment rejections
+$config['mandatory_comment_on_reject'] = FALSE;
+
+//Set this value to true if you want to forbid the employee to submit a leave request with a negative amount 
+$config['disallow_requests_without_credit'] = TRUE;
 
 //____________________________________________________________________________
 //List of available languages. If you limit this list to one language, the list of available languages will be hidden from the login form
-$config['languages'] = 'en,en-gb,fr,es,nl,de,it,ru,cs,uk,km,fa,vi,tr,zh';
+//Beware that regional variant is case sensitivie (e.g. "en-GB" and not "en-gb")
+$config['languages'] = 'en,en-GB,fr,es,nl,de,it,ru,cs,uk,km,fa,vi,tr,zh,el,pt,ar,hu,ca,ro,sk';
 
 //If you want to use another font for a specific language, put the font into assets/fonts folder and map as in this example
 //Extra fonts are coming from Google noto font project: https://www.google.com/get/noto/
@@ -449,6 +503,8 @@ $config['fonts'] =
 // Hide/Disable features
 $config['disable_overtime'] = FALSE; //Set this value to TRUE if you want to hide the menu entries related to overtime
 $config['hide_global_cals_to_users'] = FALSE; //Set this value to TRUE if you want to hide global calendars (global/tabular) to users
+$config['disable_department_calendar'] = FALSE; //Set this value to TRUE in order to disable the menu entry 'departement'
+$config['disable_workmates_calendar'] = FALSE; //Set this value to TRUE in order to disable the menu entry 'my workmates'
 
 //____________________________________________________________________________
 //Google analytics tracking code (if empty, the Javascript tracking code will be desactivated).
@@ -466,7 +522,16 @@ $config['ldap_enabled'] = FALSE;
 $config['ldap_host'] = '127.0.0.1';
 $config['ldap_port'] = 389;
 $config['ldap_basedn'] = 'uid=%s,ou=people,dc=company,dc=com';  //Change the pattern, but let %s that symbolizes the user identifier
+//If you switch on <<ldap_search_enabled>>, <<ldap_basedn>> may look like "OU=Users,DC=COMPANY,DC=COM"
 $config['ldap_basedn_db'] = FALSE;      //If TRUE, ldap path is taken from user table
+
+//Use a LDAP search filter as a connection alternative
+//Note that you need to switch <<ldap_enabled>> to TRUE and fill <<ldap_host>>,
+//<<ldap_port>>, and <<ldap_basedn>>
+$config['ldap_search_enabled'] = FALSE;
+$config['ldap_search_user'] = '';
+$config['ldap_search_password'] = '';
+$config['ldap_search_pattern'] = 'cn=%s';   //Change the pattern, but let %s that symbolizes the user identifier
 
 //____________________________________________________________________________
 //Oauth2 configuration
@@ -484,6 +549,7 @@ $config['saml_enabled'] = FALSE;
 //Enable public ICS feeds (global calendar, contract, personal information)
 $config['ics_enabled'] = TRUE;
 $config['default_timezone'] = 'Europe/Paris';
+$config['legacy_feeds'] = FALSE;    //Maintain the unsecure URLs for ICS feeds
 
 //____________________________________________________________________________
 //Enable public access for tabular and global calendar
@@ -497,10 +563,10 @@ $config['spreadsheet_format'] = 'xlsx';   //Supported formats: xlsx, ods
 
 //____________________________________________________________________________
 //Set this value to TRUE if you want to enable history of change (beware that it will impact the performance)
-$config['enable_history'] = FALSE;
+$config['enable_history'] = TRUE;
 
 //____________________________________________________________________________
 //Set this value to TRUE if you want to enable Application Performance Management features
 $config['enable_apm_rum'] = FALSE;
 //Display navigation timing to user. You need a browser supporting WebTiming API
-$config['enable_apm_display'] = FALSE;     
+$config['enable_apm_display'] = FALSE;

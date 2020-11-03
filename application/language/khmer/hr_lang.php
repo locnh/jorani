@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link       https://github.com/bbalet/jorani
  * @since      0.4.4
@@ -72,6 +72,7 @@ $lang['hr_leaves_thead_tip_edit'] = 'កែសម្រួល';
 $lang['hr_leaves_thead_tip_accept'] = 'ទទួលយកបាន';
 $lang['hr_leaves_thead_tip_reject'] = 'បដិសេធចោល';
 $lang['hr_leaves_thead_tip_delete'] = 'លុប';
+$lang['hr_leaves_thead_tip_history'] = 'show history';
 $lang['hr_leaves_thead_id'] = 'លេខអត្តសញ្ញាណ';
 $lang['hr_leaves_thead_status'] = 'ស្ថានភាព';
 $lang['hr_leaves_thead_start'] = 'កាលបរិច្ឆេទដែលចាប់ផ្តើម';
@@ -85,6 +86,7 @@ $lang['hr_leaves_popup_delete_message'] = 'អ្នកត្រូវបាន�
 $lang['hr_leaves_popup_delete_question'] = 'តើអ្នកចង់បន្ត?';
 $lang['hr_leaves_popup_delete_button_yes'] = 'យល់ព្រម';
 $lang['hr_leaves_popup_delete_button_no'] = 'មិនយល់ព្រម';
+$lang['hr_leaves_deleted_title'] = 'List of deleted leave requests';
 
 $lang['hr_export_leaves_title'] = 'សំណើរសុំឈប់មុនម៉ោង';
 $lang['hr_export_leaves_thead_id'] = 'លេខអត្តសញ្ញាណ';

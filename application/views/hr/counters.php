@@ -1,10 +1,10 @@
 <?php
 /**
  * This view allows a manager or HR admin to visualize the leave balance (taken/available/entitled) of an employee.
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
- * @since         0.2.0
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
+ * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
+ * @link       https://github.com/bbalet/jorani
+ * @since      0.2.0
  */
 ?>
 
@@ -31,9 +31,9 @@
             <tr>
               <td><?php echo $key; ?></td>
               <td><?php echo round(((float) $value[1] - (float) $value[0]), 3, PHP_ROUND_HALF_DOWN); ?></td>
-              <td><?php if ($value[2] == '') { echo ((float) $value[0]); } else { echo '-'; } ?></td>
-              <td><?php if ($value[2] == '') { echo ((float) $value[1]); } else { echo '-'; } ?></td>
-              <td><?php echo $value[2]; ?></td>
+              <td><?php if ($value[0] != '-') { echo $value[0]; } else { echo '-'; }  ?></td>
+              <td><?php echo ((float) $value[1]); ?></td>
+              <td><?php if ($value[2] != 'x') { echo $value[2]; } else { echo ''; } ?></td>
             </tr>
           <?php } ?>
           </tbody>
@@ -117,9 +117,9 @@
 <div class="row-fluid">
     <div class="span3">
       <?php if ($source == 'employees') {?>
-      <a href="<?php echo base_url();?>hr/employees" class="btn btn-primary"><i class="icon-arrow-left icon-white"></i>&nbsp;<?php echo lang('hr_summary_button_list');?></a>
+      <a href="<?php echo base_url();?>hr/employees" class="btn btn-primary"><i class="mdi mdi-arrow-left-bold"></i>&nbsp;<?php echo lang('hr_summary_button_list');?></a>
       <?php } else { ?>
-      <a href="<?php echo base_url();?>requests/collaborators" class="btn btn-primary"><i class="icon-arrow-left icon-white"></i>&nbsp;<?php echo lang('hr_summary_button_list');?></a>
+      <a href="<?php echo base_url();?>requests/collaborators" class="btn btn-primary"><i class="mdi mdi-arrow-left-bold"></i>&nbsp;<?php echo lang('hr_summary_button_list');?></a>
       <?php } ?>
     </div>
     <div class="span9">&nbsp;</div>
@@ -135,7 +135,6 @@
 if ($language_code != 'en') { ?>
 <script src="<?php echo base_url();?>assets/js/i18n/jquery.ui.datepicker-<?php echo $language_code;?>.js"></script>
 <?php } ?>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/moment-with-locales.min.js" type="text/javascript"></script>
 
 <script type="text/javascript">
     $(function () {

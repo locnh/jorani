@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license     http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link          https://github.com/bbalet/jorani
  * @since       0.4.4
@@ -21,3 +21,4 @@ $lang['session_login_msg_password_sent'] = 'رمز به ایمیل شما فرس
 $lang['session_login_flash_bad_credentials'] = 'شناسه یا رمز شما اشتباه است';
 $lang['session_login_flash_change_language'] = 'زبان سیستم موفقانه تنظیم شد به ';
 $lang['session_login_flash_account_disabled'] = 'Your account is disabled. Please contact your HR Officer / Manager.';
+$lang['session_login_no_slo'] = 'شما از Jorani خارج شده اید اما هنوز به ارائهدهنده هویت خود وارد شده اید. روی ورود به سیستم کلیک کنید تا به طور خودکار به Jorani وارد شوید.';

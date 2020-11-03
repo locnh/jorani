@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license     http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link          https://github.com/bbalet/jorani
  * @since       0.4.4
@@ -39,10 +39,14 @@ $lang['calendar_tabular_title'] = 'تقویم جدولی';
 $lang['calendar_tabular_field_select_entity'] = 'واحد را انتخاب کنید';
 $lang['calendar_tabular_field_month'] = 'ماه';
 $lang['calendar_tabular_field_year'] = 'سال';
+$lang['calendar_tabular_button_previous'] = 'Previous';
+$lang['calendar_tabular_button_next'] = 'Next';
+$lang['calendar_tabular_button_select_entity'] = 'Select an entity';
+$lang['calendar_tabular_button_select_list'] = 'Select a list';
 $lang['calendar_tabular_button_select_entity'] = 'انتخاب';
-$lang['calendar_tabular_button_execute'] = 'اجرا';
 $lang['calendar_tabular_button_export'] = 'صدور';
 $lang['calendar_tabular_check_include_subdept'] = 'شمولیت دپارتمان فرعی';
+$lang['calendar_tabular_check_display_types'] = 'Display leave types';
 $lang['calendar_tabular_popup_entity_title'] = 'انتخاب یک واحد';
 $lang['calendar_tabular_popup_entity_button_ok'] = 'تایید';
 $lang['calendar_tabular_popup_entity_button_cancel'] = 'لغو';

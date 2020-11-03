@@ -1,13 +1,22 @@
 <?php
 /**
  * This view builds a Spreadsheet file containing the list of leave requests created by an employee (from HR menu).
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.2.0
  */
 
-$sheet = $this->excel->setActiveSheetIndex(0);
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Style\Border;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
+use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
+
+$spreadsheet = new Spreadsheet();
+$sheet = $spreadsheet->getActiveSheet();
+
 $sheet->setTitle(mb_strimwidth(lang('hr_export_leaves_title'), 0, 28, "..."));  //Maximum 31 characters allowed in sheet title.
 $sheet->setCellValue('A3', lang('hr_export_leaves_thead_id'));
 $sheet->setCellValue('B3', lang('hr_export_leaves_thead_status'));
@@ -17,7 +26,7 @@ $sheet->setCellValue('E3', lang('hr_export_leaves_thead_duration'));
 $sheet->setCellValue('F3', lang('hr_export_leaves_thead_type'));
 
 $sheet->getStyle('A3:F3')->getFont()->setBold(true);
-$sheet->getStyle('A3:F3')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+$sheet->getStyle('A3:F3')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 $leaves = $this->leaves_model->getLeavesOfEmployee($id);
 $fullname = $this->users_model->getName($id);
 $sheet->setCellValue('A1', $fullname);
@@ -42,4 +51,5 @@ foreach(range('A', 'F') as $colD) {
     $sheet->getColumnDimension($colD)->setAutoSize(TRUE);
 }
 
-exportSpreadsheet($this, 'leaves');
+$spreadsheet->exportName = 'leaves';
+writeSpreadsheet($spreadsheet);

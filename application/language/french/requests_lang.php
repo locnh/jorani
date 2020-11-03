@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.1.0
@@ -12,6 +12,7 @@ $lang['requests_index_description'] = 'Cet écran liste les demandes de congé q
 $lang['requests_index_thead_tip_view'] = 'voir';
 $lang['requests_index_thead_tip_accept'] = 'accepter';
 $lang['requests_index_thead_tip_reject'] = 'refuser';
+$lang['requests_index_thead_tip_history'] = 'afficher l\'historique';
 $lang['requests_index_thead_id'] = 'N°';
 $lang['requests_index_thead_fullname'] = 'Nom complet';
 $lang['requests_index_thead_startdate'] = 'Date début';
@@ -19,6 +20,8 @@ $lang['requests_index_thead_enddate'] = 'Date fin';
 $lang['requests_index_thead_duration'] = 'Durée';
 $lang['requests_index_thead_type'] = 'Type';
 $lang['requests_index_thead_status'] = 'Statut';
+$lang['requests_index_thead_requested_date'] = 'Demandée le';
+$lang['requests_index_thead_last_change'] = 'Modifiée le';
 
 $lang['requests_collaborators_title'] = 'Liste de mes collaborateurs';
 $lang['requests_collaborators_description'] = 'Cet écran liste vos collaborateurs. Si vous n\'êtes pas un manager, cette liste sera vide.';
@@ -79,3 +82,7 @@ $lang['requests_delegations_confirm_delete_yes'] = 'Oui';
 $lang['requests_balance_title'] = 'État des congés (collaborateurs)';
 $lang['requests_balance_description'] = 'État des congés de mes collaborateurs. Si vous n\'êtes pas un manager, cette liste sera vide.';
 $lang['requests_balance_date_field'] = 'Date du rapport';
+
+$lang['requests_comment_reject_request_title'] = 'Commentaire';
+$lang['requests_comment_reject_request_button_cancel'] = 'Annuler';
+$lang['requests_comment_reject_request_button_reject'] = 'Refuser';

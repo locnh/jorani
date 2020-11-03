@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link       https://github.com/bbalet/jorani
  * @since      0.6.0
@@ -16,6 +16,8 @@ $lang['leaves_summary_thead_available'] = 'K dispozici';
 $lang['leaves_summary_thead_taken'] = 'Vybráno';
 $lang['leaves_summary_thead_entitled'] = 'Nárokováno';
 $lang['leaves_summary_thead_description'] = 'Popis';
+$lang['leaves_summary_thead_actual'] = 'aktuální';
+$lang['leaves_summary_thead_simulated'] = 'Simulované';
 $lang['leaves_summary_tbody_empty'] = 'Nemáte nárok na dovolenou pro toto období. Kontaktujte prosím personální oddělení, nebo nadřízeného.';
 $lang['leaves_summary_flash_msg_error'] = 'Zdá se že nemáte smlouvu. Prosím kontaktujte vaše HR / Manažera.';
 $lang['leaves_summary_date_field'] = 'Datum reportu';
@@ -33,6 +35,8 @@ $lang['leaves_index_thead_cause'] = 'Účel';
 $lang['leaves_index_thead_duration'] = 'Počet dnů';
 $lang['leaves_index_thead_type'] = 'Typ';
 $lang['leaves_index_thead_status'] = 'Stav';
+$lang['leaves_index_thead_requested_date'] = 'Requested';
+$lang['leaves_index_thead_last_change'] = 'Last change';
 $lang['leaves_index_button_export'] = 'Exportovat seznam';
 $lang['leaves_index_button_create'] = 'Nový požadavek';
 $lang['leaves_index_popup_delete_title'] = 'Smazat žádost o dovolenou';
@@ -67,6 +71,13 @@ $lang['leaves_create_flash_msg_success'] = 'Žádost o dovolenou byla úspěšn�
 $lang['leaves_create_flash_msg_error'] = 'Požadavek na volno byl úspěšně vytvořen nebo aktualizován, ale nemáte nadřízeného.';
 $lang['leaves_flash_spn_list_days_off'] = '%s období pracovních svátků';
 $lang['leaves_flash_msg_overlap_dayoff'] = 'Vaše žádost o dovolenou připadá na den volna.';
+
+$lang['leaves_cancellation_flash_msg_error'] = 'You can\'t cancel this leave request';
+$lang['leaves_cancellation_flash_msg_success'] = 'The cancellation request has been successfully sent';
+$lang['requests_cancellation_accept_flash_msg_success'] = 'The leave request has been successfully cancelled';
+$lang['requests_cancellation_accept_flash_msg_error'] = 'An error occured while trying to accept the cancellation';
+$lang['requests_cancellation_reject_flash_msg_success'] = 'The leave request has now its original status of Accepted';
+$lang['requests_cancellation_reject_flash_msg_error'] = 'An error occured while trying to reject the cancellation';
 
 $lang['leaves_edit_html_title'] = 'Upravit žádost o dovolenou';
 $lang['leaves_edit_title'] = 'Upravit žádost o dovolenou #';
@@ -112,3 +123,13 @@ $lang['leaves_export_thead_cause'] = 'Účel';
 $lang['leaves_export_thead_duration'] = 'Počet dnů';
 $lang['leaves_export_thead_type'] = 'Typ';
 $lang['leaves_export_thead_status'] = 'Stav';
+
+$lang['leaves_button_send_reminder'] = 'Send a reminder';
+$lang['leaves_reminder_flash_msg_success'] = 'The reminder email was sent to the manager';
+
+
+$lang['leaves_comment_title'] = 'Comments';
+$lang['leaves_comment_new_comment'] = 'New comment';
+$lang['leaves_comment_send_comment'] = 'Send comment';
+$lang['leaves_comment_author_saying'] = ' says';
+$lang['leaves_comment_status_changed'] = 'The status of the leave have been changed to ';

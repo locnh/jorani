@@ -1,7 +1,7 @@
 <?php 
 /**
  * This view allows an HR admin to create a new position (occupied by an employee).
- * @copyright  Copyright (c) 2014-2016 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.2.0
@@ -23,7 +23,7 @@ echo form_open('positions/create', $attributes); ?>
     <textarea type="input" name="description" id="description" /></textarea>
     
     <br /><br />
-    <button id="send" class="btn btn-primary"><i class="icon-ok icon-white"></i>&nbsp;<?php echo lang('positions_create_button_create');?></button>
+    <button id="send" class="btn btn-primary"><i class="mdi mdi-check"></i>&nbsp;<?php echo lang('positions_create_button_create');?></button>
     &nbsp;
-    <a href="<?php echo base_url(); ?>positions" class="btn btn-danger"><i class="icon-remove icon-white"></i>&nbsp;<?php echo lang('positions_create_button_cancel');?></a>
+    <a href="<?php echo base_url(); ?>positions" class="btn btn-danger"><i class="mdi mdi-close"></i>&nbsp;<?php echo lang('positions_create_button_cancel');?></a>
 </form>

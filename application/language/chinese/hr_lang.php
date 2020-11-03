@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license     http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link          https://github.com/bbalet/jorani
  * @since       0.4.7
@@ -70,6 +70,7 @@ $lang['hr_leaves_thead_tip_edit'] = '編輯';
 $lang['hr_leaves_thead_tip_accept'] = '接受';
 $lang['hr_leaves_thead_tip_reject'] = '拒絕';
 $lang['hr_leaves_thead_tip_delete'] = '刪除';
+$lang['hr_leaves_thead_tip_history'] = 'show history';
 $lang['hr_leaves_thead_id'] = '證號';
 $lang['hr_leaves_thead_status'] = '職位';
 $lang['hr_leaves_thead_start'] = '開始日期';
@@ -130,6 +131,7 @@ $lang['hr_overtime_popup_delete_message'] = '你可以刪除一加班申請,但�
 $lang['hr_overtime_popup_delete_question'] = '你要繼續嗎？';
 $lang['hr_overtime_popup_delete_button_yes'] = '是';
 $lang['hr_overtime_popup_delete_button_no'] = '否';
+$lang['hr_leaves_deleted_title'] = 'List of deleted leave requests';
 
 $lang['hr_export_overtime_title'] = '加班申請列表';
 $lang['hr_export_overtime_thead_id'] = '證號';

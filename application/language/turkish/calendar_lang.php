@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license     http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link          https://github.com/bbalet/jorani
  * @since       0.4.6
@@ -42,10 +42,14 @@ $lang['calendar_tabular_title'] = 'Tablosal Takvim';
 $lang['calendar_tabular_field_select_entity'] = 'Takımı seç';
 $lang['calendar_tabular_field_month'] = 'Ay';
 $lang['calendar_tabular_field_year'] = 'Yıl';
+$lang['calendar_tabular_button_previous'] = 'Previous';
+$lang['calendar_tabular_button_next'] = 'Next';
+$lang['calendar_tabular_button_select_entity'] = 'Select an entity';
+$lang['calendar_tabular_button_select_list'] = 'Select a list';
 $lang['calendar_tabular_button_select_entity'] = 'Seç';
-$lang['calendar_tabular_button_execute'] = 'Uygula';
 $lang['calendar_tabular_button_export'] = 'Dışa aktar';
 $lang['calendar_tabular_check_include_subdept'] = 'Alt departmanlar ekle';
+$lang['calendar_tabular_check_display_types'] = 'Display leave types';
 $lang['calendar_tabular_popup_entity_title'] = 'Bir takım seç';
 $lang['calendar_tabular_popup_entity_button_ok'] = 'Tamam';
 $lang['calendar_tabular_popup_entity_button_cancel'] = 'İptal';

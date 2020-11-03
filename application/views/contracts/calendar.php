@@ -1,7 +1,7 @@
 <?php
 /**
  * This view allows to configure the non-working days for a year and a given contract.
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.2.0
@@ -11,63 +11,33 @@ $dDaysOnPage = 37;
 $dDay = 1;
 ?>
 
-<style type="text/css" media="all">
-.currentDay {
-background:#FFC;
-color:red;
-}
-.days:hover {
-background:#999;
-border-color:#000;
-cursor:pointer;
-}
-.day6 {
-background:#ECECFF;
-}
-.day7 {
-background:#ECECFF;
-}
-.monthName {
-text-align:left;
-vertical-align:middle;
-}
-.monthName div {
-padding-left:10px;
-}
-
-.selectize-control {
-    display: inline-block;
-    vertical-align: middle;
-}
-</style>
-
 <h2><?php echo lang('contract_calendar_title');?> <span class="muted"><?php echo $contract_name; ?></span>&nbsp;<?php echo $help;?></h2>
 
 <?php echo $flash_partial_view;?>
 
 <div class="row-fluid">
     <div class="span3">
-        <a href="<?php echo base_url() . 'contracts/' . $contract_id . '/calendar/' . (intval($year) - 1);?>" class="btn btn-primary" id="cmdPrevious"><i class="icon-arrow-left icon-white"></i>&nbsp; <?php echo intval($year) - 1;?></a>
+        <a href="<?php echo base_url() . 'contracts/' . $contract_id . '/calendar/' . (intval($year) - 1);?>" class="btn btn-primary" id="cmdPrevious"><i class="mdi mdi-chevron-left"></i>&nbsp;<?php echo intval($year) - 1;?></a>
         &nbsp;
         <strong><?php echo $year;?></strong>
         &nbsp;
-        <a href="<?php echo base_url() . 'contracts/' . $contract_id . '/calendar/' . (intval($year) + 1);?>" class="btn btn-primary" id="cmdNext"><?php echo intval($year) + 1;?>&nbsp; <i class="icon-arrow-right icon-white"></i></a>
+        <a href="<?php echo base_url() . 'contracts/' . $contract_id . '/calendar/' . (intval($year) + 1);?>" class="btn btn-primary" id="cmdNext"><?php echo intval($year) + 1;?>&nbsp;<i class="mdi mdi-chevron-right"></i></a>
     </div>
     <div class="span2">
-        <a href="<?php echo base_url() . 'contracts';?>" class="btn btn-primary"><i class="icon-arrow-left icon-white"></i>&nbsp; <?php echo lang('contract_calendar_button_back');?></a>
+        <a href="<?php echo base_url() . 'contracts';?>" class="btn btn-primary"><i class="mdi mdi-arrow-left-bold"></i>&nbsp; <?php echo lang('contract_calendar_button_back');?></a>
     </div>
     <div class="span4">
-        <button id="cmdImportCalendar" class="btn btn-primary"><i class="icon-calendar icon-white"></i>&nbsp; <?php echo lang('contract_calendar_button_import');?></button>&nbsp;
-        <a href="#frmSetRangeDayOff" class="btn btn-primary" data-toggle="modal"><i class="icon-retweet icon-white"></i>&nbsp; <?php echo lang('contract_calendar_button_series');?></a>
+        <button id="cmdImportCalendar" class="btn btn-primary"><i class="mdi mdi-calendar-text"></i>&nbsp; <?php echo lang('contract_calendar_button_import');?></button>&nbsp;
+        <a href="#frmSetRangeDayOff" class="btn btn-primary" data-toggle="modal"><i class="mdi mdi-twitter-retweet"></i>&nbsp; <?php echo lang('contract_calendar_button_series');?></a>
     </div>
     <div class="span3">
         <?php if (!empty($contracts)) { ?>
-        <select name="contract" id="contract" class="selectized input-large">
+        <select name="contract" id="contract" title="<?php echo lang('contract_calendar_button_copy');?>">
         <?php foreach ($contracts as $contract): ?>
             <option value="<?php echo $contract['id'] ?>"><?php echo $contract['name']; ?></option>
         <?php endforeach ?>
         </select>
-        <button id="cmdContractCopy" class="btn btn-primary"><i class="fa fa-copy"></i>&nbsp; <?php echo lang('contract_calendar_button_copy');?></button>
+        <button id="cmdContractCopy" class="btn btn-primary"></button>
         <?php } ?>
     </div>
 </div>
@@ -90,7 +60,7 @@ padding-left:10px;
         <?php if ($this->config->item('ics_enabled') == FALSE) {?>
         &nbsp;
         <?php } else {?>
-        <span class="pull-right"><a id="lnkICS" href="#"><i class="icon-globe"></i> ICS</a></span>
+        <span class="pull-right"><a id="lnkICS" href="#"><i class="mdi mdi-earth nolink"></i> ICS</a></span>
         <?php }?>
     </div>
 </div>
@@ -198,8 +168,8 @@ for ($mC = 1; $mC <= 12; $mC++) {
         </select>
     </div>
     <div class="modal-footer">
-        <button id="cmdDeleteDayOff" onclick="delete_day_off();" class="btn btn-danger"><?php echo lang('contract_calendar_popup_dayoff_button_delete');?></button>
-        <button onclick="add_day_off();" class="btn"><?php echo lang('contract_calendar_popup_dayoff_button_ok');?></button>
+        <button id="cmdDeleteDayOff" onclick="deleteDayOff();" class="btn btn-danger"><?php echo lang('contract_calendar_popup_dayoff_button_delete');?></button>
+        <button onclick="setAsDayOff();" class="btn"><?php echo lang('contract_calendar_popup_dayoff_button_ok');?></button>
         <button onclick="$('#frmAddDayOff').modal('hide');" class="btn"><?php echo lang('contract_calendar_popup_dayoff_button_cancel');?></button>
     </div>
 </div>
@@ -224,7 +194,7 @@ for ($mC = 1; $mC <= 12; $mC++) {
         <label for="txtStartDate"><?php echo lang('contract_calendar_popup_series_field_from');?></label>
         <div class="input-append">
                 <input type="text" id="viz_startdate" name="viz_startdate" required />
-                <button class="btn" onclick="set_current_period();"><?php echo lang('contract_calendar_popup_series_button_current');?></button>
+                <button class="btn" onclick="setCurrentPeriod();"><?php echo lang('contract_calendar_popup_series_button_current');?></button>
             </div><br />
         <input type="hidden" name="txtStartDate" id="txtStartDate" /><br />
         <label for="txtEndDate"><?php echo lang('contract_calendar_popup_series_field_to');?></label>
@@ -242,7 +212,7 @@ for ($mC = 1; $mC <= 12; $mC++) {
         <input type="text" id="cboDayOffSeriesTitle" name="cboDayOffSeriesTitle" />
     </div>
     <div class="modal-footer">
-        <a href="#" onclick="edit_series();" class="btn"><?php echo lang('contract_calendar_popup_series_button_ok');?></a>
+        <a href="#" onclick="editSeriesOfDaysOff();" class="btn"><?php echo lang('contract_calendar_popup_series_button_ok');?></a>
         <a href="#" onclick="$('#frmSetRangeDayOff').modal('hide');" class="btn"><?php echo lang('contract_calendar_popup_series_button_cancel');?></a>
     </div>
 </div>
@@ -253,12 +223,13 @@ for ($mC = 1; $mC <= 12; $mC++) {
     </div>
     <div class="modal-body" id="frmSelectDelegateBody">
         <div class='input-append'>
-                <input type="text" class="input-xlarge" id="txtIcsUrl" onfocus="this.select();" onmouseup="return false;" 
-                    value="<?php echo base_url() . 'ics/dayoffs/' . $user_id . '/' . $contract_id;?>" />
-                 <button id="cmdCopy" class="btn" data-clipboard-text="<?php echo base_url() . 'ics/dayoffs/' . $user_id . '/' . $contract_id;?>">
-                     <i class="fa fa-clipboard"></i>
-                 </button>
-                <a href="#" id="tipCopied" data-toggle="tooltip" title="<?php echo lang('copied');?>" data-placement="right" data-container="#cmdCopy"></a>
+            <?php $icsUrl = base_url() . 'ics/dayoffs/' . $user_id . '/' . $contract_id . '?token=' . $this->session->userdata('random_hash');?>
+            <input type="text" class="input-xlarge" id="txtIcsUrl" onfocus="this.select();" onmouseup="return false;"
+                value="<?php echo $icsUrl;?>" />
+                <button id="cmdCopy" class="btn" data-clipboard-text="<?php echo $icsUrl;?>">
+                    <i class="mdi mdi-content-copy"></i>
+                </button>
+            <a href="#" id="tipCopied" data-toggle="tooltip" title="<?php echo lang('copied');?>" data-placement="right" data-container="#cmdCopy"></a>
         </div>
     </div>
     <div class="modal-footer">
@@ -266,47 +237,50 @@ for ($mC = 1; $mC <= 12; $mC++) {
     </div>
 </div>
 
-<link rel="stylesheet" href="<?php echo base_url();?>assets/css/flick/jquery-ui.custom.min.css">
-<script src="<?php echo base_url();?>assets/js/jquery-ui.custom.min.js"></script>
+<link rel="stylesheet" href="<?php echo base_url();?>assets/bootstrap-datepicker-1.8.0/css/bootstrap-datepicker.min.css">
+<script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.8.0/js/bootstrap-datepicker.min.js"></script>
 <?php //Prevent HTTP-404 when localization isn't needed
 if ($language_code != 'en') { ?>
-<script src="<?php echo base_url();?>assets/js/i18n/jquery.ui.datepicker-<?php echo $language_code;?>.js"></script>
+<script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.8.0/locales/bootstrap-datepicker.<?php echo $language_code;?>.min.js"></script>
 <?php } ?>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/moment-with-locales.min.js"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/selectize.bootstrap2.css" />
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/selectize.min.js"></script>
+
 <script src="<?php echo base_url();?>assets/js/bootbox.min.js"></script>
-<script src="<?php echo base_url();?>assets/js/clipboard-1.6.1.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.pers-brow.js"></script>
 <script type="text/javascript">
-    var timestamp;
-    //Global locale for moment objects
-    moment.locale('<?php echo $language_code;?>', {longDateFormat : {L : '<?php echo lang('global_date_momentjs_format');?>'}});
+/**
+ * Pointer to a day in the calendar, not really an actual date
+ */
+var timestamp;
 
-    //Compute the end and start dates of the civil year being displayed
-    function set_current_period() {
-        var startEntDate = moment();
-        var endEntDate = moment();
+/**
+ * Converts a local date to an ISO compliant string
+ * Because toISOString converts to UTC causing one day
+ * of shift in some zones
+ * @param Date $d JavaScript native date object
+ * @return String Date converted in the format YYYY-MM-DD
+ */
+function toISODateLocal(d) {
+    var z = n => (n<10? '0':'')+n;
+    return d.getFullYear() + '-' + z(d.getMonth()+1) + '-' + z(d.getDate()); 
+}
 
-        //Compute boundaries
-        startEntDate.year(<?php echo $year;?>);
-        startEntDate.month(0);
-        startEntDate.date(1);
-        endEntDate.year(<?php echo $year;?>);
-        endEntDate.month(11);
-        endEntDate.date(31);
+/**
+ * Compute the end and start dates of the civil year being displayed
+ * in the modal for editing a series of non working days
+ * @return void
+ */
+function setCurrentPeriod() {
+    var startEntDate = new Date('<?php echo $year;?>-01-01');
+    var endEntDate = new Date('<?php echo $year;?>-12-31');
+    $("#viz_startdate").datepicker('setDate', startEntDate);
+    $("#viz_enddate").datepicker('setDate', endEntDate);
+}
 
-        //Presentation for DB and Human
-        startEntDate.locale('<?php echo $language_code;?>');
-        endEntDate.locale('<?php echo $language_code;?>');
-        $("#txtStartDate").val(startEntDate.format("YYYY-MM-DD"));
-        $("#txtEndDate").val(endEntDate.format("YYYY-MM-DD"));
-        $("#viz_startdate").val(startEntDate.format("L"));
-        $("#viz_enddate").val(endEntDate.format("L"));
-    }
-
-//Add a day off by an Ajax query
-function add_day_off() {
+/**
+ * Define a day as a non working day
+ * Data taken from modal and current day pointer
+ * @return void
+ */
+function setAsDayOff() {
     $("#cboType").val($('#' + timestamp).data("type"));
     $.ajax({
         url: "<?php echo base_url();?>contracts/calendar/edit",
@@ -329,8 +303,12 @@ function add_day_off() {
         });
 }
 
-//Delete a day off by an Ajax query
-function delete_day_off() {
+/**
+ * Delete a day off by an Ajax query
+ * On click on a day that is a day off
+ * @return void
+ */
+function deleteDayOff() {
     $.ajax({
         url: "<?php echo base_url();?>contracts/calendar/edit",
         type: "POST",
@@ -346,8 +324,12 @@ function delete_day_off() {
         });
 }
 
-//Edit a serie of days off by an Ajax query
-function edit_series() {
+/**
+ * Edit a serie of days off by an Ajax query
+ *
+ * @return void
+ */
+function editSeriesOfDaysOff() {
     $("#cboType").val($('#' + timestamp).data("type"));
     $.ajax({
         url: "<?php echo base_url();?>contracts/calendar/series",
@@ -365,6 +347,22 @@ function edit_series() {
         });
 }
 
+/**
+ * Change the text of the copy button so as to get a clear indication
+ * of which contract is going to be copied to another contract
+ * @return void
+ */
+function changeTextCopyButton() {
+  var source = '<?php echo $contract_name; ?>';
+  var data = $('#contract').select2('data');
+  if (data !== undefined) {
+    var dest = data[0].text;
+    var text = '<i class="mdi mdi-content-copy"></i>&nbsp;' +
+                source + '&nbsp;<i class="mdi mdi-arrow-right-thick"></i>&nbsp;' + dest;
+    $('#cmdContractCopy').html(text);
+  }
+}
+
 //On load
 $(function() {
 <?php if ($this->config->item('csrf_protection') == TRUE) {?>
@@ -376,32 +374,30 @@ $(function() {
 <?php }?>
     $("#frmAddDayOff").alert();
     $("#frmSetRangeDayOff").alert();
-    $('#contract').selectize();
-    
-        $("#viz_startdate").datepicker({
-        changeMonth: true,
-        changeYear: true,
-        dateFormat: '<?php echo lang('global_date_js_format');?>',
-        altFormat: "yy-mm-dd",
-        altField: "#txtStartDate",
-        numberOfMonths: 3,
-              onClose: function( selectedDate ) {
-                $( "#viz_enddate" ).datepicker( "option", "minDate", selectedDate );
-              }
-    }, $.datepicker.regional['<?php echo $language_code;?>']);
-    
+
+    //Widget for contract copy select box
+    $('#contract').select2();
+    $('#contract').on('select2:select', function (e) {
+      changeTextCopyButton();
+    });
+    changeTextCopyButton();
+
+    $("#viz_startdate").datepicker({
+        language: "<?php echo $language_code;?>",
+        autoclose: true
+    }).on('changeDate', function(e){
+        $("#txtStartDate").val(toISODateLocal(e.date));
+        $("#viz_enddate").datepicker('setStartDate', e.date);
+    });
+
     $("#viz_enddate").datepicker({
-        changeMonth: true,
-        changeYear: true,
-        dateFormat: '<?php echo lang('global_date_js_format');?>',
-        altFormat: "yy-mm-dd",
-        altField: "#txtEndDate",
-        numberOfMonths: 3,
-              onClose: function( selectedDate ) {
-                $( "#viz_startdate" ).datepicker( "option", "maxDate", selectedDate );
-              }
-    }, $.datepicker.regional['<?php echo $language_code;?>']);
-    
+        language: "<?php echo $language_code;?>",
+        autoclose: true
+    }).on('changeDate', function(e){
+        $("#txtEndDate").val(toISODateLocal(e.date));
+        $("#viz_startdate").datepicker('setEndDate', e.date);
+    });
+
     //Display modal form that allow adding a day off
     $("#fullyear").on("click", "td", function() {
         timestamp = $(this).data("id");
@@ -422,17 +418,17 @@ $(function() {
             $('#frmAddDayOff').modal('show');
         }
     });
-    
+
     //Prevent to load always the same content
     $('#frmAddDayOff').on('hidden', function() {
         $(this).removeData('modal');
     });
-    
+
     //Give focus on first field on opening add day off dialog
     $('#frmAddDayOff').on('shown', function () {
         $('input:text:visible:first', this).focus();
     });
-    
+
     //Copy a contract (if a source contract was selected)
     $("#cmdContractCopy").on("click", function() {
         if ((!$("#contract option:selected").length) || ($("#contract option:selected").text() == '')) {
@@ -441,12 +437,12 @@ $(function() {
             document.location = '<?php echo base_url() . 'contracts/' . $contract_id . '/calendar/' . $year . '/copy/';?>' + $("#contract").val();
         }
     });
-    
+
     //Import an iCalendar feed by using its URL
     $("#cmdImportCalendar").on("click", function() {
         var last_imported = '';
-        if($.cookie('import_ical_url') != null) {
-            last_imported = $.cookie('import_ical_url');
+        if(Cookies.get('import_ical_url') !== undefined) {
+            last_imported = Cookies.get('import_ical_url');
         }
         bootbox.prompt(
         "<?php echo lang('contract_calendar_prompt_import');?>",
@@ -456,22 +452,21 @@ $(function() {
             if (result === null) {
               //NOP
             } else {
-              //http://localhost/import.ics
-              //Ajax call to ics import function (using SabreDAV/VObject
+              //Ajax call to ics import function (using SabreDAV/VObject)
               $.ajax({
                   url: "<?php echo base_url(); ?>contracts/calendar/import",
                   type: "POST",
-                  data: { 
-                          contract: <?php echo $contract_id; ?>,
-                          url: result
+                  data: {
+                        contract: <?php echo $contract_id; ?>,
+                        url: result
                       }
                 }).done(function( msg ) {
                       //If no error, reload the page and save last used URL
                       if (msg == "") {
-                          $.cookie('import_ical_url', result);
-                          location.reload(true);
+                        Cookies.set('import_ical_url', result);
+                        location.reload(true);
                       } else {
-                          bootbox.alert(msg);
+                        bootbox.alert(msg);
                       }
                   });
             }
@@ -481,7 +476,7 @@ $(function() {
     });
 
     //Copy/Paste ICS Feed
-    var client = new Clipboard("#cmdCopy");
+    var client = new ClipboardJS("#cmdCopy");
     $('#lnkICS').click(function () {
         $("#frmLinkICS").modal('show');
     });

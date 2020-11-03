@@ -1,14 +1,13 @@
-<?php 
+<?php
 /**
  * This view is included into all desktop full views. It contains the footer of the application.
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link       https://github.com/bbalet/jorani
  * @since      0.1.0
  */
 ?>
-                    </div><!-- /span12 -->
-                </div><!-- /row -->
+
             </div><!-- /container -->
         <div id="push"></div>
     </div><!-- /wrap -->
@@ -19,10 +18,10 @@
         </div>
         <div class="span4 pull-right">
               <?php switch ($language_code){
-                  case 'fr' : echo '<a class="anchor" href="http://fr.jorani.org/" target="_blank">Jorani</a>'; break;
-                  default : echo '<a class="anchor" href="http://jorani.org/" target="_blank">Jorani</a>'; break;
+                  case 'fr' : echo '<a class="anchor" href="https://fr.jorani.org/" target="_blank">Jorani</a>'; break;
+                  default : echo '<a class="anchor" href="https://jorani.org/" target="_blank">Jorani</a>'; break;
               } ?>
-          &nbsp;v0.6.0&nbsp;&copy;2014-2017 Benjamin BALET
+          &nbsp;v<?php echo $GLOBALS['versionOfJorani'];?>&nbsp;&copy;2014-2019 Benjamin BALET
         </div>
     </div>
     </div>
@@ -65,27 +64,27 @@ if ($this->config->item("enable_apm_rum")) {
 // Add a load event listener that display web timing
 window.addEventListener("load", displayRUMInfo, false);
 function displayRUMInfo() {
-  var perfData = window.performance.timing; 
+  var perfData = window.performance.timing;
   var pageLoadTime = parseInt(perfData.domComplete - perfData.domLoading);
   var networkLatency = parseInt(perfData.responseEnd - perfData.requestStart);
   var ciElapsedTime = parseInt($("#ci_elapsed_time").val());
   var ciDatabaseTime = parseInt($("#ci_database_time").val());
   var total = ciDatabaseTime + ciElapsedTime + networkLatency + pageLoadTime;
-  var content = '<i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;';
+  var content = '<i class="mdi mdi-memory" aria-hidden="true" title="Memory"></i>&nbsp;';
   content += $("#ci_memory_usage").val() + ' bytes ';
-  content += '<i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;';
+  content += '<i class="mdi mdi-clock" aria-hidden="true" title="Total time for user"></i>&nbsp;';
   content += total + ' ms ';
   content += '&nbsp;&nbsp;&mdash;&nbsp;&nbsp;';
-  content += '<i class="fa fa-database" aria-hidden="true"></i>&nbsp;';
+  content += '<i class="mdi mdi-database" aria-hidden="true" title="SQL execution time (number of queries)"></i>&nbsp;';
   content += ciDatabaseTime + ' ms (' + $("#ci_database_count").val() + ') ';
   content += '&nbsp;';
-  content += '<i class="fa fa-cogs" aria-hidden="true"></i>&nbsp;';
+  content += '<i class="mdi mdi-code-string" aria-hidden="true" title="PHP Execution time"></i>&nbsp;';
   content += ciElapsedTime + ' ms ';
   content += '&nbsp;';
-  content += '<i class="fa fa-arrow-down" aria-hidden="true"></i>&nbsp;';
+  content += '<i class="mdi mdi-download" aria-hidden="true" title="Download time"></i>&nbsp;';
   content += networkLatency + ' ms ';
   content += '&nbsp;';
-  content += '<i class="fa fa-internet-explorer" aria-hidden="true"></i>&nbsp;';
+  content += '<i class="mdi mdi-internet-explorer" aria-hidden="true" title="Client processing time"></i>&nbsp;';
   content += pageLoadTime + ' ms ';
   $("#rum_info").html(content);
 }

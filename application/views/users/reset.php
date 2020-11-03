@@ -1,7 +1,7 @@
 <?php 
 /**
  * This partial view is loaded into a modal form and allows the connected user to change its password.
- * @copyright  Copyright (c) 2014-2016 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.2.0
@@ -18,15 +18,14 @@ echo form_open('users/reset/' . $target_user_id, $attributes); ?>
     <br />
     <button id="send" class="btn btn-primary"><?php echo lang('users_reset_button_reset');?></button>
 
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/jsencrypt.min.js"></script>
 <script type="text/javascript">
     $(function () {
         $('#send').click(function() {
-            var encrypt = new JSEncrypt();
-            encrypt.setPublicKey($('#pubkey').val());
-            var encrypted = encrypt.encrypt($('#password').val());
-            $('#CipheredValue').val(encrypted);
-            $('#target').submit();
+            var encrypter = new CryptoTools();
+            encrypter.encrypt($('#pubkey').val(), $('#password').val()).then((encrypted) => {
+                $('#CipheredValue').val(encrypted);
+                $('#target').submit();
+            });
         });
         
         //Validate the form if the user press enter key in password field

@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.4.0
@@ -21,3 +21,4 @@ $lang['session_login_msg_password_sent'] = 'La contraseña ha sido enviada a su 
 $lang['session_login_flash_bad_credentials'] = 'Identificación o contraseña incorrecta';
 $lang['session_login_flash_change_language'] = 'El idioma se ha establecido correctamente a';
 $lang['session_login_flash_account_disabled'] = 'Your account is disabled. Please contact your HR Officer / Manager.';
+$lang['session_login_no_slo'] = 'Usted ha cerrado la sesión de Jorani pero todavía ha iniciado sesión en su proveedor de identidad. Haga clic en Iniciar sesión para iniciar sesión automáticamente en Jorani.';

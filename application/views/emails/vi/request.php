@@ -1,7 +1,7 @@
 <?php
 /**
  * Email template.You can change the content of this template
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.4.5
@@ -41,8 +41,11 @@
                 <td>Lý do</td><td>{Reason}</td>
             </tr>
             <tr>
+              <td>Last Comment &nbsp;</td><td>{Comments}</td>
+            </tr>
+            <tr>
                 <td><a href="{BaseUrl}requests/accept/{LeaveId}">Chấp nhận</a> &nbsp;</td>
-                <td><a href="{BaseUrl}requests/reject/{LeaveId}">Từ chối</a></td>
+                <td><a href="{BaseUrl}requests?rejected={LeaveId}">Từ chối</a></td>
             </tr>
         </table>
         <br />

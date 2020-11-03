@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license     http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link          https://github.com/bbalet/jorani
  * @since       0.4.7
@@ -16,6 +16,8 @@ $lang['leaves_summary_thead_available'] = '可行';
 $lang['leaves_summary_thead_taken'] = '拿取';
 $lang['leaves_summary_thead_entitled'] = '可享有權利';
 $lang['leaves_summary_thead_description'] = '描述';
+$lang['leaves_summary_thead_actual'] = '实际';
+$lang['leaves_summary_thead_simulated'] = '模拟';
 $lang['leaves_summary_tbody_empty'] = '此時段無可休假天數,請聯繫HR部門/管理者';
 $lang['leaves_summary_flash_msg_error'] = '你無類別.請連繫HR部門/管理者';
 $lang['leaves_summary_date_field'] = '報告建立日期';
@@ -23,6 +25,7 @@ $lang['leaves_summary_date_field'] = '報告建立日期';
 $lang['leaves_index_title'] = '我的休假申請';
 $lang['leaves_index_thead_tip_view'] = '預覽';
 $lang['leaves_index_thead_tip_edit'] = '編輯';
+$lang['leaves_index_thead_tip_cancel'] = '取消';
 $lang['leaves_index_thead_tip_delete'] = '刪除';
 $lang['leaves_index_thead_tip_history'] = 'show history';
 $lang['leaves_index_thead_id'] = '證號';
@@ -32,6 +35,8 @@ $lang['leaves_index_thead_cause'] = '理由';
 $lang['leaves_index_thead_duration'] = '時段';
 $lang['leaves_index_thead_type'] = '編輯';
 $lang['leaves_index_thead_status'] = '職位';
+$lang['leaves_index_thead_requested_date'] = 'Requested';
+$lang['leaves_index_thead_last_change'] = 'Last change';
 $lang['leaves_index_button_export'] = '匯出此單';
 $lang['leaves_index_button_create'] = '新申請';
 $lang['leaves_index_popup_delete_title'] = '刪除休假申請';
@@ -66,6 +71,13 @@ $lang['leaves_create_flash_msg_error'] = '休假申請已建立或更新,但尚�
 
 $lang['leaves_flash_spn_list_days_off'] = '％s非工作日於此時段';
 $lang['leaves_flash_msg_overlap_dayoff'] = '你的休假申請符合非工作日';
+
+$lang['leaves_cancellation_flash_msg_error'] = 'You can\'t cancel this leave request';
+$lang['leaves_cancellation_flash_msg_success'] = 'The cancellation request has been successfully sent';
+$lang['requests_cancellation_accept_flash_msg_success'] = 'The leave request has been successfully cancelled';
+$lang['requests_cancellation_accept_flash_msg_error'] = 'An error occured while trying to accept the cancellation';
+$lang['requests_cancellation_reject_flash_msg_success'] = 'The leave request has now its original status of Accepted';
+$lang['requests_cancellation_reject_flash_msg_error'] = 'An error occured while trying to reject the cancellation';
 
 $lang['leaves_edit_html_title'] = '編輯一休假申請';
 $lang['leaves_edit_title'] = '編輯休假申請';
@@ -113,3 +125,12 @@ $lang['leaves_export_thead_cause'] = '理由';
 $lang['leaves_export_thead_duration'] = '時段';
 $lang['leaves_export_thead_type'] = '編輯';
 $lang['leaves_export_thead_status'] = '職位';
+
+$lang['leaves_button_send_reminder'] = 'Send a reminder';
+$lang['leaves_reminder_flash_msg_success'] = 'The reminder email was sent to the manager';
+
+$lang['leaves_comment_title'] = 'Comments';
+$lang['leaves_comment_new_comment'] = 'New comment';
+$lang['leaves_comment_send_comment'] = 'Send comment';
+$lang['leaves_comment_author_saying'] = ' says';
+$lang['leaves_comment_status_changed'] = 'The status of the leave have been changed to ';

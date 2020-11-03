@@ -1,11 +1,11 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
- * @since         0.1.0
- * @author       Christian SONNENBERG
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
+ * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
+ * @link       https://github.com/bbalet/jorani
+ * @since      0.6.5
+ * @author     Transifex users
  */
 
 $lang['treeview_context_menu_create'] = 'Erstellen';

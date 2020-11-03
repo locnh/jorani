@@ -1,13 +1,13 @@
 <?php
 /**
  * Email template.You can change the content of this template
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.1.0
  */
 ?>
-<html lang="en">
+<html lang="tr">
     <head>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta charset="UTF-8">
@@ -20,9 +20,9 @@
     </head>
     <body>
         <h3>{Title}</h3>
-        <p>Dear {Firstname} {Lastname},</p>
-        <p>Your Jorani password has been reset. If you did not perform this operation, please contact your manager.</p>
+        <p>Sevgili {Firstname} {Lastname},</p>
+        <p>Jorani şifreniz sıfırlandı. Eğer bu işlemi siz yapmadıysanız, lütfen yöneticinize başvurun.</p>
         <hr>
-        <h5>*** This is an automatically generated message, please do not reply to this message ***</h5>
+        <h5>*** Bu otomatik olarak oluşturulmuş bir mesajdır, lütfen bu mesaja cevap vermeyin ***</h5>
     </body>
 </html>

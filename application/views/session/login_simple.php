@@ -1,7 +1,7 @@
-<?php 
+<?php
 /**
  * This view displays a simplified login form for OAtuh2 authorization.
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link       https://github.com/bbalet/jorani
  * @since      0.6.0
@@ -14,22 +14,18 @@
     <meta charset="utf-8">
     <title><?php echo $title ?> - Jorani</title>
     <meta description="Jorani a free and open source leave management system. Workflow of approval; e-mail notifications; calendars; reports; export to Excel and more.">
-    <meta name="version" content="0.6.0">
+    <meta name="version" content="1.0.1">
     <link href="<?php echo base_url();?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url();?>assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>assets/css/jorani-0.5.1.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/dist/legacy.css">
 <?php CI_Controller::get_instance()->load->helper('language');
 $this->lang->load('global', $language);?>
-    <!--[if lte IE 8]>
+    <!--[if lte IE 9]>
     <script type="text/javascript">
     alert("<?php echo lang('global_msg_old_browser'); ?>");
     </script>
     <![endif]-->
-    <!--[if lt IE 9]>
-    <script src="<?php echo base_url();?>assets/js/html5shiv.min.js"></script>
-    <![endif]-->
-    <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/js/legacy.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>assets/bootstrap/js/bootstrap.min.js"></script>
     <link rel="icon" type="image/x-icon" href="<?php echo base_url();?>favicon.ico" sizes="32x32">
     <style>
@@ -44,7 +40,7 @@ if (!is_null($fonts)) {
     body, button, input, select, .ui-datepicker, .selectize-input {
         font-family: '<?php echo $fonts[$language_code]['name'];?>' !important;
     }
-<?php 
+<?php
         }
     } ?>
 </style>
@@ -86,7 +82,7 @@ if (!is_null($fonts)) {
             <label for="password"><?php echo lang('session_login_field_password');?></label>
             <input class="input-medium" type="password" name="password" id="password" /><br />
             <br />
-            <button id="send" class="btn btn-primary"><i class="icon-user icon-white"></i>&nbsp;<?php echo lang('session_login_button_login');?></button>
+            <button id="send" class="btn btn-primary"><i class="mdi mdi-login"></i>&nbsp;<?php echo lang('session_login_button_login');?></button>
             <br />
             <input type="hidden" name="salt" id="salt" value="<?php echo $salt; ?>" />
             <textarea id="pubkey" style="visibility:hidden;"><?php echo $public_key; ?></textarea>
@@ -94,29 +90,25 @@ if (!is_null($fonts)) {
     </div>
 </div>
 
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/selectize.bootstrap2.css" />
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.pers-brow.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/jsencrypt.min.js"></script>
 <script type="text/javascript">
-    
+
     //Encrypt the password using RSA and send the ciphered value into the form
     function submit_form() {
-        var encrypt = new JSEncrypt();
-        encrypt.setPublicKey($('#pubkey').val());
-        //Encrypt the concatenation of the password and the salt
-        var encrypted = encrypt.encrypt($('#password').val() + $('#salt').val());
-        $('#CipheredValue').val(encrypted);
-        $('#loginForm').submit();
+        var encrypter = new CryptoTools();
+        var clearText = $('#password').val() + $('#salt').val();
+        encrypter.encrypt($('#pubkey').val(), clearText).then((encrypted) => {
+            $('#CipheredValue').val(encrypted);
+            $('#loginFrom').submit();
+        });
     }
 
     $(function () {
-    
         $('#login').focus();
-        
+
         $('#send').click(function() {
             submit_form();
         });
-        
+
         //Validate the form if the user press enter key in password field
         $('#password').keypress(function(e){
             if(e.keyCode==13)

@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link       https://github.com/bbalet/jorani
  * @since      0.6.0
@@ -13,9 +13,9 @@ $lang['menu_banner_welcome'] = 'Vítejte';
 $lang['menu_banner_logout'] = 'Odhlásit';
 $lang['menu_banner_tip_myprofile'] = 'Zobrazit mé personální informace';
 $lang['menu_banner_tip_reset'] = 'resetovat heslo';
-
 $lang['menu_password_popup_title'] = 'Změnit heslo';
 $lang['menu_password_popup_button_cancel'] = 'Zrušit';
+$lang['menu_leaves_request_button'] = 'New request';
 
 $lang['menu_admin_title'] = 'Správa';
 $lang['menu_admin_list_users'] = 'Seznam uživatelů';

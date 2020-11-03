@@ -1,7 +1,7 @@
 <?php
 /**
  * This view displays the leave requests of the collaborators of the connected user (if any).
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.1.0
@@ -16,15 +16,19 @@
 <p><?php echo lang('calendar_collaborators_description');?></p>
 
 <div class="row-fluid">
-    <div class="span2"><span class="label"><?php echo lang('Planned');?></span></div>
-    <div class="span2"><span class="label label-success"><?php echo lang('Accepted');?></span></div>
-    <div class="span2"><span class="label label-warning"><?php echo lang('Requested');?></span></div>
-    <div class="span2"><span class="label label-important" style="background-color: #ff0000;"><?php echo lang('Rejected');?></span></div>
+    <div class="span8">
+        <span class="label"><?php echo lang('Planned');?></span>
+        <span class="label label-success"><?php echo lang('Accepted');?></span>
+        <span class="label label-warning"><?php echo lang('Requested');?></span>
+        <span class="label label-important" style="background-color: #ff0000;"><?php echo lang('Rejected');?></span>
+        <span class="label label-important" style="background-color: #ff0000;"><?php echo lang('Cancellation');?></span>
+        <span class="label label-important" style="background-color: #ff0000;"><?php echo lang('Canceled');?></span>
+    </div>
     <div class="span4">
         <?php if ($this->config->item('ics_enabled') == FALSE) {?>
         &nbsp;
         <?php } else {?>
-        <span class="pull-right"><a id="lnkICS" href="#"><i class="icon-globe"></i> ICS</a></span>
+        <span class="pull-right"><a id="lnkICS" href="#"><i class="mdi mdi-earth nolink"></i> ICS</a></span>
         <?php }?>        
     </div>
 </div>
@@ -49,12 +53,13 @@
     </div>
     <div class="modal-body" id="frmSelectDelegateBody">
         <div class='input-append'>
-                <input type="text" class="input-xlarge" id="txtIcsUrl" onfocus="this.select();" onmouseup="return false;" 
-                    value="<?php echo base_url() . 'ics/collaborators/' . $user_id;?>" />
-                 <button id="cmdCopy" class="btn" data-clipboard-text="<?php echo base_url() . 'ics/collaborators/' . $user_id;?>">
-                     <i class="fa fa-clipboard"></i>
-                 </button>
-                <a href="#" id="tipCopied" data-toggle="tooltip" title="<?php echo lang('copied');?>" data-placement="right" data-container="#cmdCopy"></a>
+            <?php $icsUrl = base_url() . 'ics/collaborators/' . $user_id . '?token=' . $this->session->userdata('random_hash');?>
+            <input type="text" class="input-xlarge" id="txtIcsUrl" onfocus="this.select();" onmouseup="return false;" 
+                value="<?php echo $icsUrl;?>" />
+                <button id="cmdCopy" class="btn" data-clipboard-text="<?php echo $icsUrl;?>">
+                    <i class="mdi mdi-content-copy"></i>
+                </button>
+            <a href="#" id="tipCopied" data-toggle="tooltip" title="<?php echo lang('copied');?>" data-placement="right" data-container="#cmdCopy"></a>
         </div>
     </div>
     <div class="modal-footer">
@@ -63,13 +68,11 @@
 </div>
 
 <link href="<?php echo base_url();?>assets/fullcalendar-2.8.0/fullcalendar.css" rel="stylesheet">
-<script type="text/javascript" src="<?php echo base_url();?>assets/fullcalendar-2.8.0/lib/moment.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/fullcalendar-2.8.0/fullcalendar.min.js"></script>
 <?php if ($language_code != 'en') {?>
-<script type="text/javascript" src="<?php echo base_url();?>assets/fullcalendar-2.8.0/lang/<?php echo $language_code;?>.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/fullcalendar-2.8.0/lang/<?php echo strtolower($language_code);?>.js"></script>
 <?php }?>
 <script src="<?php echo base_url();?>assets/js/bootbox.min.js"></script>
-<script src="<?php echo base_url();?>assets/js/clipboard-1.6.1.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
     
@@ -148,7 +151,7 @@ $(document).ready(function() {
     });
     
     //Copy/Paste ICS Feed
-    var client = new Clipboard("#cmdCopy");
+    var client = new ClipboardJS("#cmdCopy");
     $('#lnkICS').click(function () {
         $("#frmLinkICS").modal('show');
     });

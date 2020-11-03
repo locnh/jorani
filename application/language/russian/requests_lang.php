@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.4.2
@@ -13,6 +13,7 @@ $lang['requests_index_description'] = 'Здесь показан список з
 $lang['requests_index_thead_tip_view'] = 'просмотреть';
 $lang['requests_index_thead_tip_accept'] = 'утвердить';
 $lang['requests_index_thead_tip_reject'] = 'отклонить';
+$lang['requests_index_thead_tip_history'] = 'show history';
 $lang['requests_index_thead_id'] = 'ID';
 $lang['requests_index_thead_fullname'] = 'ФИО';
 $lang['requests_index_thead_startdate'] = 'Дата начала';
@@ -20,6 +21,8 @@ $lang['requests_index_thead_enddate'] = 'Дата окончания';
 $lang['requests_index_thead_duration'] = 'Продолжительность';
 $lang['requests_index_thead_type'] = 'Тип';
 $lang['requests_index_thead_status'] = 'Состояние';
+$lang['requests_index_thead_requested_date'] = 'Requested';
+$lang['requests_index_thead_last_change'] = 'Last change';
 
 $lang['requests_collaborators_title'] = 'Список моих сотрудников';
 $lang['requests_collaborators_description'] = 'Здесь показан список ваших сотрудников. Если вы не руководитель, этот список всегда будет пуст.';

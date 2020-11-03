@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license     http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link          https://github.com/bbalet/jorani
  * @since       0.4.7
@@ -13,6 +13,7 @@ $lang['requests_index_description'] = '休假申請列表已傳送給你,如你�
 $lang['requests_index_thead_tip_view'] = '預覽';
 $lang['requests_index_thead_tip_accept'] = '接受';
 $lang['requests_index_thead_tip_reject'] = '拒絕';
+$lang['requests_index_thead_tip_history'] = 'show history';
 $lang['requests_index_thead_id'] = '證號';
 $lang['requests_index_thead_fullname'] = '全名';
 $lang['requests_index_thead_startdate'] = '開始日期';
@@ -20,6 +21,8 @@ $lang['requests_index_thead_enddate'] = '結束日期';
 $lang['requests_index_thead_duration'] = '時段';
 $lang['requests_index_thead_type'] = '編輯';
 $lang['requests_index_thead_status'] = '職位';
+$lang['requests_index_thead_requested_date'] = 'Requested';
+$lang['requests_index_thead_last_change'] = 'Last change';
 
 $lang['requests_collaborators_title'] = '我的部屬清單';
 $lang['requests_collaborators_description'] = '此表為你的部屬直接報告,如你不是管理者此表將為空白';
@@ -78,3 +81,7 @@ $lang['requests_delegations_confirm_delete_yes'] = '是';
 $lang['requests_balance_title'] = '請假餘額(部屬)';
 $lang['requests_balance_description'] = 'Leave balance of my direct report subordinates. If you are not a manager, this list will always be empty.';
 $lang['requests_balance_date_field'] = '報告建立日期';
+
+$lang['requests_comment_reject_request_title'] = 'Comment';
+$lang['requests_comment_reject_request_button_cancel'] = 'Cancel';
+$lang['requests_comment_reject_request_button_reject'] = 'Reject';

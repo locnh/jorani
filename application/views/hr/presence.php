@@ -2,7 +2,7 @@
 /**
  * This view builds the monthly presence report of an employee
  * By default, the last month is selected.
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.3.1
@@ -34,12 +34,12 @@
         <p><?php echo lang('hr_presence_non_working_days');?> : <b><a href="<?php echo base_url();?>contracts/<?php echo $contract_id; ?>/calendar"><?php echo $non_working_days;?></a></b></p>
         <?php } ?>
         <?php } else { ?>
-        <p><?php echo lang('hr_presence_contract');?> : <i class="icon-warning-sign"></i><?php echo lang('hr_presence_no_contract');?></p>
-        <p><?php echo lang('hr_presence_working_days');?> : <i class="icon-warning-sign"></i><?php echo lang('hr_presence_no_contract');?></p>
-        <p><?php echo lang('hr_presence_non_working_days');?> : <i class="icon-warning-sign"></i><?php echo lang('hr_presence_no_contract');?></p>
+        <p><?php echo lang('hr_presence_contract');?> : <i class="mdi mdi-alert"></i><?php echo lang('hr_presence_no_contract');?></p>
+        <p><?php echo lang('hr_presence_working_days');?> : <i class="mdi mdi-alert"></i><?php echo lang('hr_presence_no_contract');?></p>
+        <p><?php echo lang('hr_presence_non_working_days');?> : <i class="mdi mdi-alert"></i><?php echo lang('hr_presence_no_contract');?></p>
         <?php } ?>
-        <p><?php echo lang('hr_presence_work_duration');?> : <b><?php echo $work_duration;?></b>&nbsp;<i class="icon-hand-left"></i><?php echo lang('hr_presence_please_check');?></p>
-        <p><?php echo lang('hr_presence_leave_duration');?> : <b><?php echo $leave_duration;?></b>&nbsp;<i class="icon-hand-left"></i><?php echo lang('hr_presence_please_check');?></p>
+        <p><?php echo lang('hr_presence_work_duration');?> : <b><?php echo $work_duration;?></b>&nbsp;<i class="mdi mdi-alert-circle-outline"></i><?php echo lang('hr_presence_please_check');?></p>
+        <p><?php echo lang('hr_presence_leave_duration');?> : <b><?php echo $leave_duration;?></b>&nbsp;<i class="mdi mdi-alert-circle-outline"></i><?php echo lang('hr_presence_please_check');?></p>
         <?php if (count($leaves_detail) > 0) { ?>
         <ul>
             <?php foreach ($leaves_detail as $leaves_type_name => $leaves_type_sum) { ?>
@@ -71,11 +71,11 @@
                 }
             }?>
         </select><br />
-        <button id="cmdPrevious" class="btn btn-primary"><i class="icon-chevron-left icon-white"></i></button>
+        <button id="cmdPrevious" class="btn btn-primary"><i class="mdi mdi-chevron-left"></i></button>
         <button id="cmdExecute" class="btn btn-primary"><?php echo lang('hr_presence_button_execute');?></button>
-        <button id="cmdNext" class="btn btn-primary"><i class="icon-chevron-right icon-white"></i></button>
+        <button id="cmdNext" class="btn btn-primary"><i class="mdi mdi-chevron-right"></i></button>
         <br /><br />
-        <a href="<?php echo base_url() . 'hr/presence/export/' . $source . '/' . $user_id . '/' . $month . '/' . $year;?>" class="btn btn-primary"><i class="fa fa-file-excel-o"></i>&nbsp;<?php echo lang('hr_presence_button_export');?></a>
+        <a href="<?php echo base_url() . 'hr/presence/export/' . $source . '/' . $user_id . '/' . $month . '/' . $year;?>" class="btn btn-primary"><i class="mdi mdi-download"></i>&nbsp;<?php echo lang('hr_presence_button_export');?></a>
      </div>
 </div>
 
@@ -218,7 +218,7 @@
         <tr>
             <th><?php echo lang('hr_presence_thead_id');?></th>
             <th><?php echo lang('hr_presence_thead_start');?></th>
-            <th><?php echo lang('hr_presence_thead_end');?></th>            
+            <th><?php echo lang('hr_presence_thead_end');?></th>
             <th><?php echo lang('hr_presence_thead_duration');?></th>
             <th><?php echo lang('hr_presence_thead_type');?></th>
         </tr>
@@ -250,10 +250,16 @@
     <div class="span12">
         <h3><?php echo lang('hr_summary_title');?>&nbsp;<?php echo $employee_id; ?>&nbsp;<span class="muted"> (<?php echo $employee_name; ?>)</span>&nbsp;<?php echo $help;?></h3>
 
+        <?php if (is_null($summary)) { ?>
+        <div class="alert">
+        <?php echo lang('hr_presence_no_contract');?>
+        </div>
+        <?php } else { ?>
+
         <p><?php echo lang('hr_summary_date_field');?>&nbsp;
             <input type="text" value="<?php echo $refDate; ?>" readonly />
         </p>
-        
+
         <table id="counters" cellpadding="0" cellspacing="0" border="0" class="display" width="100%">
             <thead>
                 <tr>
@@ -276,6 +282,7 @@
               <?php } ?>
               </tbody>
         </table>
+        <?php } ?>
     </div>
 </div>
 
@@ -284,9 +291,9 @@
 <div class="row-fluid">
     <div class="span12">
       <?php if ($source == 'employees') {?>
-      <a href="<?php echo base_url();?>hr/employees" class="btn btn-primary"><i class="icon-arrow-left icon-white"></i>&nbsp;<?php echo lang('hr_presence_button_list');?></a>
+      <a href="<?php echo base_url();?>hr/employees" class="btn btn-primary"><i class="mdi mdi-arrow-left-bold"></i>&nbsp;<?php echo lang('hr_presence_button_list');?></a>
       <?php } else { ?>
-      <a href="<?php echo base_url();?>requests/collaborators" class="btn btn-primary"><i class="icon-arrow-left icon-white"></i>&nbsp;<?php echo lang('hr_presence_button_list');?></a>
+      <a href="<?php echo base_url();?>requests/collaborators" class="btn btn-primary"><i class="mdi mdi-arrow-left-bold"></i>&nbsp;<?php echo lang('hr_presence_button_list');?></a>
       <?php } ?>
     </div>
 </div>
@@ -297,19 +304,18 @@
 </div>
 
 <link href="<?php echo base_url();?>assets/fullcalendar-2.8.0/fullcalendar.css" rel="stylesheet">
-<script type="text/javascript" src="<?php echo base_url();?>assets/fullcalendar-2.8.0/lib/moment.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/fullcalendar-2.8.0/fullcalendar.min.js"></script>
 <?php if ($language_code != 'en') {?>
-<script type="text/javascript" src="<?php echo base_url();?>assets/fullcalendar-2.8.0/lang/<?php echo $language_code;?>.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/fullcalendar-2.8.0/lang/<?php echo strtolower($language_code);?>.js"></script>
 <?php }?>
 <link href="<?php echo base_url();?>assets/datatable/DataTables-1.10.11/css/jquery.dataTables.min.css" rel="stylesheet">
 <script type="text/javascript" src="<?php echo base_url();?>assets/datatable/DataTables-1.10.11/js/jquery.dataTables.min.js"></script>
 
 <script type="text/javascript">
 var employee = <?php echo $user_id;?>;
-    
+
 $(function () {
-    
+
     //Transform the HTML tables into fancy datatables
     var oTable = $('#leaves').dataTable({
             order: [[ 1, "asc" ]],
@@ -337,7 +343,7 @@ $(function () {
                 }
             },
         });
-        
+
         $('#counters').dataTable({
             order: [[ 0, "desc" ]],
             language: {
@@ -364,7 +370,7 @@ $(function () {
                 }
             }
         });
-        
+
         //Load a tiny calendar
         $('#calendar').fullCalendar({
             timeFormat: ' ', /*Trick to remove the start time of the event*/
@@ -380,7 +386,7 @@ $(function () {
                     $('#frmModalAjaxWait').modal('show');
                 } else {
                     $('#frmModalAjaxWait').modal('hide');
-                }    
+                }
             },
             eventRender: function(event, element, view) {
                 if(event.imageurl){
@@ -429,7 +435,7 @@ $(function () {
         $('#calendar').fullCalendar('addEventSource', '<?php echo base_url();?>leaves/individual/' + employee);
         $('#calendar').fullCalendar('addEventSource', '<?php echo base_url();?>contracts/calendar/userdayoffs/' + employee);
 
-        
+
         //Execute the report for another date
         $('#cmdExecute').click(function() {
             var month = $('#cboMonth').val();
@@ -454,8 +460,7 @@ date_sub($datePrev, date_interval_create_from_date_string('1 month'));?>
             var url = '<?php echo base_url();?>hr/presence/<?php echo $source;?>/' + employee + '/' + month+ '/' + year;
             document.location.href = url;
         });
-        
+
         refresh_calendar();
 });
 </script>
-

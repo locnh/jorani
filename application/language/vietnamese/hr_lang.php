@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license     http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link          https://github.com/bbalet/jorani
  * @since       0.4.5
@@ -72,6 +72,7 @@ $lang['hr_leaves_thead_tip_edit'] = 'sửa';
 $lang['hr_leaves_thead_tip_accept'] = 'chấp nhận';
 $lang['hr_leaves_thead_tip_reject'] = 'từ chối';
 $lang['hr_leaves_thead_tip_delete'] = 'xóa';
+$lang['hr_leaves_thead_tip_history'] = 'show history';
 $lang['hr_leaves_thead_id'] = 'ID';
 $lang['hr_leaves_thead_status'] = 'Trạng thái';
 $lang['hr_leaves_thead_start'] = 'Ngày bắt đầu';
@@ -85,6 +86,7 @@ $lang['hr_leaves_popup_delete_message'] = 'Bạn muốn xóa một đề nghị 
 $lang['hr_leaves_popup_delete_question'] = 'Bạn muốn tiếp tục chứ?';
 $lang['hr_leaves_popup_delete_button_yes'] = 'Có';
 $lang['hr_leaves_popup_delete_button_no'] = 'không';
+$lang['hr_leaves_deleted_title'] = 'List of deleted leave requests';
 
 $lang['hr_export_leaves_title'] = 'Danh sách các yêu cầu nghỉ';
 $lang['hr_export_leaves_thead_id'] = 'ID';

@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.1.0
@@ -13,6 +13,8 @@ $lang['reports_index_thead_description'] = 'Description';
 
 $lang['reports_execute_title'] = 'Rapport';
 $lang['reports_execute_button_back_list'] = 'Retour à la liste des rapports';
+
+$lang['reports_native_title'] = 'Liste des rapports';
 
 $lang['reports_balance_title'] = 'État des congés';
 $lang['reports_balance_date_field'] = 'Date du rapport';

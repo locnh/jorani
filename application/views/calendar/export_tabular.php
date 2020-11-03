@@ -2,13 +2,21 @@
 /**
  * This view exports a tabular calendar of the leave taken by a group of users
  * It builds a Spreadsheet file downloaded by the browser.
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.4.3
  */
 
-$sheet = $this->excel->setActiveSheetIndex(0);  
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Style\Border;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
+use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
+
+$spreadsheet = new Spreadsheet();
+$sheet = $spreadsheet->getActiveSheet();
 
 //Print the header with the values of the export parameters
 $sheet->setTitle(mb_strimwidth(lang('calendar_tabular_export_title'), 0, 28, "..."));  //Maximum 31 characters allowed in sheet title.
@@ -17,8 +25,8 @@ $sheet->setCellValue('A2', lang('calendar_tabular_export_param_month'));
 $sheet->setCellValue('A3', lang('calendar_tabular_export_param_year'));
 $sheet->setCellValue('A4', lang('calendar_tabular_export_param_children'));
 $sheet->getStyle('A1:A4')->getFont()->setBold(true);
-$sheet->setCellValue('B1', $this->organization_model->getName($id));
-$sheet->setCellValue('B2', $month);
+$sheet->setCellValue('B1', $entityName);
+$sheet->setCellValue('B2', $month . ' (' . $monthName . ')');
 $sheet->setCellValue('B3', $year);
 if ($children == TRUE) {
     $sheet->setCellValue('B4', lang('global_true'));
@@ -31,7 +39,7 @@ $start = $year . '-' . $month . '-' . '1';    //first date of selected month
 $lastDay = date("t", strtotime($start));    //last day of selected month
 for ($ii = 1; $ii <=$lastDay; $ii++) {
     $dayNum = date("N", strtotime($year . '-' . $month . '-' . $ii));
-    $col = $this->excel->column_name(3 + $ii);
+    $col = columnName(3 + $ii);
     //Print day number
     $sheet->setCellValue($col . '9', $ii);
     //Print short name of the day
@@ -50,33 +58,31 @@ for ($ii = 1; $ii <=$lastDay; $ii++) {
 $sheet->setCellValue('C8', lang('calendar_tabular_export_thead_employee'));
 $sheet->mergeCells('C8:C9');
 //The header is horizontally aligned
-$col = $this->excel->column_name(3 + $lastDay);
-$sheet->getStyle('C8:' . $col . '9')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-
-//Get the tabular data
-$tabular = $this->leaves_model->tabular($id, $month, $year, $children);
+$col = columnName(3 + $lastDay);
+$sheet->getStyle('C8:' . $col . '9')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
 //Box around the lines for each employee
 $styleBox = array(
     'borders' => array(
         'top' => array(
-            'style' => PHPExcel_Style_Border::BORDER_THIN
+            'borderStyle' => Border::BORDER_THIN
         ),
         'bottom' => array(
-            'style' => PHPExcel_Style_Border::BORDER_THIN
+            'borderStyle' => Border::BORDER_THIN
         )
     )
   );
 
+//Box around a day
 $dayBox =  array(
     'borders' => array(
         'left' => array(
-            'style' => PHPExcel_Style_Border::BORDER_DASHDOT,
-            'rgb' => '808080'
+            'borderStyle' => Border::BORDER_DASHDOT,
+            'color' => array('rgb' => '808080')
         ),
         'right' => array(
-            'style' => PHPExcel_Style_Border::BORDER_DASHDOT,
-            'rgb' => '808080'
+            'borderStyle' => Border::BORDER_DASHDOT,
+            'color' => array('rgb' => '808080')
         )
     )
  );
@@ -84,49 +90,58 @@ $dayBox =  array(
 //Background colors for the calendar according to the type of leave
 $styleBgPlanned = array(
     'fill' => array(
-        'type' => PHPExcel_Style_Fill::FILL_SOLID,
-        'color' => array('rgb' => 'DDD')
+        'fillType' => Fill::FILL_SOLID,
+        'startColor' => array('rgb' => 'DDD')
     )
 );
 $styleBgRequested = array(
     'fill' => array(
-        'type' => PHPExcel_Style_Fill::FILL_SOLID,
-        'color' => array('rgb' => 'F89406')
+        'fillType' => Fill::FILL_SOLID,
+        'startColor' => array('rgb' => 'F89406')
     )
 );
 $styleBgAccepted = array(
     'fill' => array(
-        'type' => PHPExcel_Style_Fill::FILL_SOLID,
-        'color' => array('rgb' => '468847')
+        'fillType' => Fill::FILL_SOLID,
+        'startColor' => array('rgb' => '468847')
     )
 );
 $styleBgRejected = array(
     'fill' => array(
-        'type' => PHPExcel_Style_Fill::FILL_SOLID,
-        'color' => array('rgb' => 'FF0000')
+        'fillType' => Fill::FILL_SOLID,
+        'startColor' => array('rgb' => 'FF0000')
     )
 );
 $styleBgDayOff = array(
     'fill' => array(
-        'type' => PHPExcel_Style_Fill::FILL_SOLID,
-        'color' => array('rgb' => '000000')
+        'fillType' => Fill::FILL_SOLID,
+        'startColor' => array('rgb' => '000000')
     )
 );
 
+$canSeeType = TRUE;
 $line = 10;
 //Iterate on all employees of the selected entity
 foreach ($tabular as $employee) {
     //Merge the two line containing the name of the employee and apply a border around it
     $sheet->setCellValue('C' . $line, $employee->name);
     $sheet->mergeCells('C' . $line . ':C' . ($line + 1));
-    $col = $this->excel->column_name($lastDay + 3);
+    $col = columnName($lastDay + 3);
     $sheet->getStyle('C' . $line . ':' . $col . ($line + 1))->applyFromArray($styleBox);
 
     //Iterate on all days of the selected month
     $dayNum = 0;
     foreach ($employee->days as $day) {
+        if (($is_hr == TRUE) ||
+                ($is_admin == TRUE) ||
+                ($employee->manager == $user_id) ||
+                ($employee->id == $user_id)) {
+            $canSeeType = TRUE;
+        } else {
+            $canSeeType = FALSE;
+        }
         $dayNum++;
-        $col = $this->excel->column_name(3 + $dayNum);
+        $col = columnName(3 + $dayNum);
         if (strstr($day->display, ';')) {//Two statuses in the cell
             $statuses = explode(";", $day->status);
             $types = explode(";", $day->type);
@@ -139,27 +154,40 @@ foreach ($tabular as $employee) {
                 //6 - Afternoon Day Off /|
               $sheet->getComment($col . $line)->getText()->createTextRun($types[0]);
               $sheet->getComment($col . ($line + 1))->getText()->createTextRun($types[1]);
-              switch (intval($statuses[1]))
+              switch (intval($statuses[0]))
               {
                 case 1: $sheet->getStyle($col . $line)->applyFromArray($styleBgPlanned); break;  // Planned
                 case 2: $sheet->getStyle($col . $line)->applyFromArray($styleBgRequested); break;  // Requested
                 case 3: $sheet->getStyle($col . $line)->applyFromArray($styleBgAccepted); break;  // Accepted
                 case 4: $sheet->getStyle($col . $line)->applyFromArray($styleBgRejected); break;  // Rejected
-                case '5': $sheet->getStyle($col . $line)->applyFromArray($styleBgDayOff); break;    //Day off
-                case '6': $sheet->getStyle($col . $line)->applyFromArray($styleBgDayOff); break;    //Day off
+                case 5: $sheet->getStyle($col . $line)->applyFromArray($styleBgRejected); break;    //Cancellation
+                case 6: $sheet->getStyle($col . $line)->applyFromArray($styleBgRejected); break;    //Canceled
+                case 12: $sheet->getStyle($col . $line)->applyFromArray($styleBgDayOff); break;    //Day off
+                case 13: $sheet->getStyle($col . $line)->applyFromArray($styleBgDayOff); break;    //Day off
               }
-              switch (intval($statuses[0]))
+              switch (intval($statuses[1]))
               {
                 case 1: $sheet->getStyle($col . ($line + 1))->applyFromArray($styleBgPlanned); break;  // Planned
                 case 2: $sheet->getStyle($col . ($line + 1))->applyFromArray($styleBgRequested); break;  // Requested
                 case 3: $sheet->getStyle($col . ($line + 1))->applyFromArray($styleBgAccepted); break;  // Accepted
                 case 4: $sheet->getStyle($col . ($line + 1))->applyFromArray($styleBgRejected); break;  // Rejected
-                case '5': $sheet->getStyle($col . ($line + 1))->applyFromArray($styleBgDayOff); break;    //Day off
-                case '6': $sheet->getStyle($col . ($line + 1))->applyFromArray($styleBgDayOff); break;    //Day off
-              }//Two statuses in the cell
+                case 5: $sheet->getStyle($col . ($line + 1))->applyFromArray($styleBgRejected); break;    //Cancellation
+                case 6: $sheet->getStyle($col . ($line + 1))->applyFromArray($styleBgRejected); break;    //Canceled
+                case 12: $sheet->getStyle($col . ($line + 1))->applyFromArray($styleBgDayOff); break;    //Day off
+                case 13: $sheet->getStyle($col . ($line + 1))->applyFromArray($styleBgDayOff); break;    //Day off
+              }
+            if ($displayTypes && $canSeeType) {
+                $acronyms = explode(";", $day->acronym);
+                $sheet->setCellValue($col . $line, $acronyms[0]);
+                $sheet->setCellValue($col . ($line + 1), $acronyms[1]);
+            }
         } else {//Only one status in the cell
             switch ($day->display) {
                 case '1':   //All day
+                        if ($displayTypes && $canSeeType) {
+                            $sheet->setCellValue($col . $line, $day->acronym);
+                            $sheet->setCellValue($col . ($line + 1), $day->acronym);
+                        }
                         $sheet->getComment($col . $line)->getText()->createTextRun($day->type);
                         $sheet->getComment($col . ($line + 1))->getText()->createTextRun($day->type);
                         switch ($day->status)
@@ -172,9 +200,14 @@ foreach ($tabular as $employee) {
                             case 2: $sheet->getStyle($col . $line . ':' . $col . ($line + 1))->applyFromArray($styleBgRequested); break; // Requested
                             case 3: $sheet->getStyle($col . $line . ':' . $col . ($line + 1))->applyFromArray($styleBgAccepted); break;  // Accepted
                             case 4: $sheet->getStyle($col . $line . ':' . $col . ($line + 1))->applyFromArray($styleBgRejected); break;  // Rejected
+                            case 5: $sheet->getStyle($col . $line . ':' . $col . ($line + 1))->applyFromArray($styleBgRejected); break;  // Cancellation
+                            case 6: $sheet->getStyle($col . $line . ':' . $col . ($line + 1))->applyFromArray($styleBgRejected); break;  // Canceled
                         }
                         break;
                 case '2':   //AM
+                    if ($displayTypes && $canSeeType) {
+                        $sheet->setCellValue($col . $line, $day->acronym);
+                    }
                     $sheet->getComment($col . $line)->getText()->createTextRun($day->type);
                     switch ($day->status)
                       {
@@ -182,9 +215,14 @@ foreach ($tabular as $employee) {
                           case 2: $sheet->getStyle($col . $line)->applyFromArray($styleBgRequested); break;  // Requested
                           case 3: $sheet->getStyle($col . $line)->applyFromArray($styleBgAccepted); break;  // Accepted
                           case 4: $sheet->getStyle($col . $line)->applyFromArray($styleBgRejected); break;  // Rejected
+                          case 5: $sheet->getStyle($col . $line)->applyFromArray($styleBgRejected); break;  // Cancellation
+                          case 6: $sheet->getStyle($col . $line)->applyFromArray($styleBgRejected); break;  // Canceled
                       }
                     break;
                 case '3':   //PM
+                    if ($displayTypes && $canSeeType) {
+                        $sheet->setCellValue($col . ($line + 1), $day->acronym);
+                    }
                     $sheet->getComment($col . ($line + 1))->getText()->createTextRun($day->type);
                     switch ($day->status)
                       {
@@ -192,6 +230,8 @@ foreach ($tabular as $employee) {
                           case 2: $sheet->getStyle($col . ($line + 1))->applyFromArray($styleBgRequested); break;  // Requested
                           case 3: $sheet->getStyle($col . ($line + 1))->applyFromArray($styleBgAccepted); break;  // Accepted
                           case 4: $sheet->getStyle($col . ($line + 1))->applyFromArray($styleBgRejected); break;  // Rejected
+                          case 5: $sheet->getStyle($col . ($line + 1))->applyFromArray($styleBgRejected); break;  // Cancellation
+                          case 6: $sheet->getStyle($col . ($line + 1))->applyFromArray($styleBgRejected); break;  // Canceled
                       }
                     break;
                 case '4': //Full day off
@@ -199,11 +239,11 @@ foreach ($tabular as $employee) {
                     $sheet->getComment($col . $line)->getText()->createTextRun($day->type);
                     $sheet->getComment($col . ($line + 1))->getText()->createTextRun($day->type);
                     break;
-                case '5':  //AM off
+                case '12':  //AM off
                     $sheet->getStyle($col . $line)->applyFromArray($styleBgDayOff);
                     $sheet->getComment($col . $line)->getText()->createTextRun($day->type);
                     break;
-                case '6':   //PM off
+                case '13':   //PM off
                     $sheet->getStyle($col . ($line + 1))->applyFromArray($styleBgDayOff);
                     $sheet->getComment($col . ($line + 1))->getText()->createTextRun($day->type);
                     break;
@@ -215,7 +255,7 @@ foreach ($tabular as $employee) {
 
 //Autofit for all column containing the days
 for ($ii = 1; $ii <=$lastDay; $ii++) {
-    $col = $this->excel->column_name($ii + 3);
+    $col = columnName($ii + 3);
     $sheet->getStyle($col . '8:' . $col . ($line - 1))->applyFromArray($dayBox);
     $sheet->getColumnDimension($col)->setAutoSize(TRUE);
 }
@@ -223,11 +263,12 @@ $sheet->getColumnDimension('A')->setAutoSize(TRUE);
 $sheet->getColumnDimension('B')->setAutoSize(TRUE);
 $sheet->getColumnDimension('C')->setWidth(40);
 
-//Set layout to landscape and make the Excel sheet fit to the page
-$sheet->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
-$sheet->getPageSetup()->setPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
-$sheet->getPageSetup()->setFitToPage(true);
+//Set layout to landscape and make the Excel sheet to fit to the page
+$sheet->getPageSetup()->setOrientation(PageSetup::ORIENTATION_LANDSCAPE);
+$sheet->getPageSetup()->setPaperSize(PageSetup::PAPERSIZE_A4);
+$sheet->getPageSetup()->setFitToPage(TRUE);
 $sheet->getPageSetup()->setFitToWidth(1);
 $sheet->getPageSetup()->setFitToHeight(0);
 
-exportSpreadsheet($this, 'tabular');
+$spreadsheet->exportName = 'tabular';
+writeSpreadsheet($spreadsheet);

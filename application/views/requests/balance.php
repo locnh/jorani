@@ -1,7 +1,7 @@
-<?php 
+<?php
 /**
  * This view displays the leave balance of the collaborators of the connected employee (manager).
- * @copyright  Copyright (c) 2014-2016 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link            https://github.com/bbalet/jorani
  * @since         0.4.5
@@ -12,7 +12,7 @@
     <div class="span12">
 
         <h2><?php echo lang('requests_balance_title');?>  &nbsp;<?php echo $help;?></h2>
-        
+
         <p><?php echo lang('requests_balance_description');?></p>
 
         <p><?php echo lang('requests_balance_date_field');?>&nbsp;<input type="text" id="refdate" /></p>
@@ -40,7 +40,7 @@
             <?php endforeach ?>
             </tbody>
         </table>
-        
+
     </div>
 </div>
 
@@ -59,7 +59,6 @@
 if ($language_code != 'en') { ?>
 <script src="<?php echo base_url();?>assets/js/i18n/jquery.ui.datepicker-<?php echo $language_code;?>.js"></script>
 <?php } ?>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/moment-with-locales.min.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 $(function () {
@@ -84,7 +83,7 @@ $(function () {
                     },
                     {
                         extend:    'excelHtml5',
-                        text:      '<i class="fa fa-file-excel-o"></i>',
+                        text:      '<i class="mdi mdi-download"></i>',
                         titleAttr: 'Excel'
                     }
             ],
@@ -94,7 +93,7 @@ $(function () {
                     '<?php echo lang('datatable_10_rows');?>',
                     '<?php echo lang('datatable_25_rows');?>',
                     '<?php echo lang('datatable_50_rows');?>',
-                    '<?php echo lang('datatable_all_rows');?>' 
+                    '<?php echo lang('datatable_all_rows');?>'
                 ]
             ],
         language: {
@@ -124,7 +123,7 @@ $(function () {
             }
         },
     });
-    
+
     //Init datepicker widget (it is complicated because we cannot based it on UTC)
     isDefault = <?php echo $isDefault;?>;
     moment.locale('<?php echo $language_code;?>', {longDateFormat : {L : '<?php echo lang('global_date_momentjs_format');?>'}});

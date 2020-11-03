@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link       https://github.com/bbalet/jorani
  * @since      0.6.0
@@ -127,6 +127,7 @@ $lang['users_employees_thead_id'] = 'Identifikace';
 $lang['users_employees_thead_firstname'] = 'Jméno';
 $lang['users_employees_thead_lastname'] = 'Příjmení';
 $lang['users_employees_thead_email'] = 'E-mail';
+$lang['users_employees_thead_entity'] = 'Entity';
 
 $lang['users_reset_field_password'] = 'Heslo';
 $lang['users_reset_button_reset'] = 'Reset';

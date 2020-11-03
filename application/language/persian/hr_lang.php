@@ -1,7 +1,7 @@
 <?php
 /**
  * Translation file
- * @copyright  Copyright (c) 2014-2017 Benjamin BALET
+ * @copyright  Copyright (c) 2014-2019 Benjamin BALET
  * @license     http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link          https://github.com/bbalet/jorani
  * @since       0.4.4
@@ -72,6 +72,7 @@ $lang['hr_leaves_thead_tip_edit'] = 'ویرایش';
 $lang['hr_leaves_thead_tip_accept'] = 'پذیرفتن';
 $lang['hr_leaves_thead_tip_reject'] = 'رد';
 $lang['hr_leaves_thead_tip_delete'] = 'حذف';
+$lang['hr_leaves_thead_tip_history'] = 'show history';
 $lang['hr_leaves_thead_id'] = 'شناسه';
 $lang['hr_leaves_thead_status'] = 'وضعیت';
 $lang['hr_leaves_thead_start'] = 'تاریخ شروع';
@@ -85,6 +86,7 @@ $lang['hr_leaves_popup_delete_message'] = 'شما میخواهید یک درخو
 $lang['hr_leaves_popup_delete_question'] = 'آیا میخواهید ادامه بدهید؟';
 $lang['hr_leaves_popup_delete_button_yes'] = 'بله';
 $lang['hr_leaves_popup_delete_button_no'] = 'خیر';
+$lang['hr_leaves_deleted_title'] = 'List of deleted leave requests';
 
 $lang['hr_export_leaves_title'] = 'لیست درخواستهای مرخصی';
 $lang['hr_export_leaves_thead_id'] = 'شناسه';
